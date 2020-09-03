@@ -1,0 +1,39 @@
+:root{
+    --main-space:10px;
+}
+
+.mainHeader{
+    text-align: center;
+    padding-top: calc(var(--main-space)*3);
+    padding-bottom: calc(var(--main-space)*3);
+    border-bottom: 1px solid black;
+}
+
+.productsUl{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.productsList{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    padding: calc(var(--main-space)*3) calc(var(--main-space)*4);
+    /* border: 1px solid black; */
+    margin: var(--main-space);
+
+}
+
+.img, .info{
+    border: 1px solid black;
+    text-align: center;
+}
+
+main{
+    border-bottom: 1px solid black;
+    margin-bottom: calc(var(--main-space)*3);
+}

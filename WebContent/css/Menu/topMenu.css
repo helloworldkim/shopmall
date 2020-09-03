@@ -1,0 +1,108 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    
+}
+a{
+    text-decoration: none;
+    color: black;
+}
+:root{
+    --main-padding : 10px;
+    --top-ContainerPadding:0 50px;
+}
+
+.topContainer{
+    min-width: 960px;
+    height: 105px;
+    /* background-color: bisque; */
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--top-ContainerPadding);
+    border-bottom: 1px solid black;
+
+}
+
+.searchContainer{
+    width: 290px;
+    height: 41px;
+    position: relative;
+    overflow: hidden;
+}
+
+.searchContainer input{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    border-radius: 20px;
+    border: 1px solid black;
+}
+.searchContainer input:focus {
+    outline: none;
+}
+.searchContainer input:hover{
+    background-color: gray;
+}
+.searchContainer i{
+    position: absolute;
+    font-size: 2em;
+    top:5px;
+    right: 10px;
+    vertical-align: middle;
+}
+
+.topNavContainer{
+    width: 500px;
+    height: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topNavContainer i {
+    cursor: pointer;
+    font-size: 25px;
+}
+
+.topNavContainer i:hover {
+    transform: scale(1.2);
+}
+.topSecondNavContainer{
+    width: 100%;
+    height: 40px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
+    z-index: 100;
+    padding-bottom: var(--main-padding);
+}
+
+.productList{
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    text-align: center;
+}
+.productList li{
+    display: inline;
+    padding: var(--main-padding);
+}
+
+.productList a{
+    display: inline-block;
+}
+/* 스크롤 많아졌을때 상단 맨위에 fixed 되는 스타일 */
+.topSecondNavContainer.sticky{
+    position: fixed;
+    top: 0;
+    background-color: white;
+}

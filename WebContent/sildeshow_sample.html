@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 1060;
+            height: 100vh;
+            min-width: 960;
+        }
+
+        .sildeshow{
+            position: relative;
+            width: 960;
+            height: 360;
+           /* overflow: hidden; */
+        }
+        img{
+            display: none;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    </style>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <div class="sildeshow">
+        <img src="../img/img1.jfif" width='960' height="360" alt="">
+        <img src="../img/img2.jfif" width='960' height="360" alt="">
+        <img src="../img/img3.jfif" width='960' height="360" alt="">
+        <img src="../img/img4.jfif" width='960' height="360" alt="">
+    </div>
+</div>
+</body>
+<script>
+    $(function(){
+        var imgs = $(".sildeshow img");
+        var sildeCount = imgs.length;
+        var currentIndex = 0;
+        imgs.eq(currentIndex).fadeIn();
+        var timer = setInterval(showNextSilde, 3500)
+
+        function showNextSilde(){
+        var nextIndex = (currentIndex+1)%4;
+            imgs.eq(currentIndex).fadeOut();
+            imgs.eq(nextIndex).fadeIn();
+            currentIndex=nextIndex;
+        }
+        imgs.mouseover(function(){
+            clearInterval(timer);
+        }).mouseout(function(){
+            setInterval(showNextSilde,3500);
+        });
+
+    });
+</script>
+</html>

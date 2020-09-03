@@ -1,0 +1,137 @@
+.join_header{
+	text-align: center;
+}
+.flexbox {
+	width:100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 50px;
+}
+.flexbox i{
+	font-size: 3em;
+}
+.flexbox li{
+	margin-right: 15px;
+	font-size: 2em;
+}
+/* 이용약관,회원정보 밑줄 */
+.flexbox li::after{
+	content: '';
+	display: block;
+	width: 97px;
+	border-bottom: 1px solid black;
+}
+.flexbox li.flex.agree::after{
+	content: '';
+	display: block;
+	width: 97px;
+	border-bottom: 1px solid black;
+}
+.flex{
+	display: flex;
+	flex-direction: column;
+	padding: 50px;
+}
+
+.main_section{
+	display: flex;
+	min-width: 960px;
+	margin: 0 auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding-bottom: 20px;
+	
+}
+.main_section iframe{
+	width: 700px;
+	height: 300px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.joinBtn {
+	width: 150px;
+	height: 50px;
+	border-radius: 10px;
+	background-color: black;
+	color: white;
+}
+
+.joinBtn:hover{
+	background-color: #888888;
+}
+
+.main_section form{
+	min-width: 960px;
+
+}
+
+/* join 2 form부분 */
+
+.idCheckBtn{
+	width: 80px;
+	height: 30px;
+	border-radius: 10px;
+	background-color: white;
+	border: 1px solid black;
+	position: absolute;
+	top: 30px;
+	right: 90px;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	line-height: 30px;
+	transition-duration: 500ms;
+}
+.idCheckBtn:hover{
+	transform: scale(1.1);
+	background-color: lightgray;
+	border: 1px solid black;
+}
+/* form에 적용되는부분 */
+.main_section form{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+/* form안에 div부분 */
+.group{
+	width: 100%;
+	height: 100px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+/* form input부분 */
+.formInput{
+	outline: none;
+	border: 0;
+	border-bottom: 1px solid black;
+
+}
+.formInput:hover, .formInput:focus{
+	background-color: #888888;
+}
+/* 가입 취소 버튼부분 */
+.groupBtn{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+fieldset{
+	margin-bottom: 20px;
+	border: 1px solid black;
+}
+/* 중복체크시 나타날부분 */
+#checkbox{
+	display: none;
+} 
+.visible{
+	display: inline;
+}
+/* 중복체크 버튼 위치잡기위한 포지션 */
+.userIdGroup{
+	position: relative;
+}
