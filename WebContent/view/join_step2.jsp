@@ -158,14 +158,14 @@
         <div class="footerInfo">
             <div class="footerInfoDetail">
                 <div class="footerInfoDetailRow">
-                    <!-- git 커밋연습용 수정<div>
+                    <div>
                         <h1>CUSTOMER CENTER</h1>
                         <p>02-1644-3225<br>
 			                            월~금 : am 11 ~ pm 5<br>
 			                            점심시간 : pm 12 ~ 1<br>
                             (토/일/공휴일은 휴무)
                         </p>
-                    </div> -->
+                    </div>
                     <div style="border-right: 1px solid black; width: 1px; height: 97px; position: absolute; top: 25px; left: 170px;"></div>
                     <div>
                         <h1>BANK INFO</h1>
