@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -45,7 +46,14 @@
             </div>
             <!-- 상단 nav bar -->
             <nav class="topNavContainer" role='navigation_member'>
-                <a href="login.jsp">로그인</a>
+            <c:choose>
+            <c:when test="${empty sessionScope.userId}">
+            	<a href="login.jsp">로그인</a>
+           	</c:when>
+           	 <c:otherwise>
+            	<a href="/UserLogout">로그아웃</a>
+           	</c:otherwise>
+           	</c:choose>
                 <a href="join_step1.jsp">회원가입</a>
                 <a href="">마이페이지</a>
                 <a href="">고객센터</a>
@@ -54,6 +62,7 @@
                 <i class="fas fa-heart"></i>
                 <i class="fas fa-star"></i>
             </nav>
+            
         </div>
         <!-- top 두번째 nav부분 -->
         <nav class="topSecondNavContainer" role='navigation_menu'>
