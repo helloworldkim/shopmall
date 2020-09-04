@@ -69,7 +69,8 @@
 
 /* join 2 form부분 */
 
-.idCheckBtn{
+/*id중복체크,phone인증 버튼 위치 css  */
+.checkBtn{
 	width: 80px;
 	height: 30px;
 	border-radius: 10px;
@@ -84,7 +85,8 @@
 	line-height: 30px;
 	transition-duration: 500ms;
 }
-.idCheckBtn:hover{
+
+.checkBtn:hover{
 	transform: scale(1.1);
 	background-color: lightgray;
 	border: 1px solid black;
@@ -131,7 +133,8 @@ fieldset{
 .visible{
 	display: inline;
 }
-/* 중복체크 버튼 위치잡기위한 포지션 */
-.userIdGroup{
-	position: relative;
+
+/*회원가입 form label의 밑줄  */
+form div>label{
+	border-bottom: 1px solid black;
 }

@@ -6,8 +6,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
-    <!-- slideshow css -->
-    <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
     <link rel="stylesheet" href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
@@ -24,8 +22,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
     <!--font aswsome cdn  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- join step1 js -->
-    <script src="../js/join_step1.js"></script>
+    <script src="../js/join_step2.js"></script>
 </head>
 <body>
 <!-- 헤더부분 -->
@@ -92,17 +89,17 @@
     </header>
     <!-- 회원가입폼 -->
     <section class="main_section">
-        <form action="register.jsp" id='frm' method="post">
+        <form action="/UserRegister" id='frm' method="post">
             <fieldset>
             <div class="group">
                 <label for="userName">이름</label>
                 <input type="text" class="formInput" id="userName" name="userName">
             </div>
-            <div class="group userIdGroup">
+            <div class="group">
                 <label for="userId">아이디</label>
-                <div>
-                    <input type="text" class="formInput" id='userId' name="userId" placeholder="영문,숫자 조합">
-                    <span id="idCheck" class="idCheckBtn">중복체크</span>
+                <div class="input-group mb-3">
+                    <input type="text" class="formInput input-group-append" id='userId' name="userId" placeholder="영문,숫자 조합">
+                    <span id="idCheckBtn" class="checkBtn input-group-append">중복체크</span>
                 </div>
             </div>
             <!-- 중복체크전까지는 none상태 -->
@@ -117,7 +114,10 @@
             </div>
             <div class="group">
                 <label for="userPhone">휴대폰</label>
-                <input type="text" class="formInput" id="userPhone" name="userPhone" placeholder="ex 010-2222-0000">
+                <div class="input-group mb-3">
+	                <input type="text" class="formInput" id="userPhone" name="userPhone" placeholder="ex 010-2222-0000">
+	                <span id="userPhoneCheckBtn" class="checkBtn input-group-append">휴대폰인증</span>
+                </div>
             </div>
             <div class="group">
                 <label for="userBirth">생년월일</label>
