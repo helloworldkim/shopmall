@@ -134,7 +134,14 @@ fieldset{
 	display: inline;
 }
 
-/*회원가입 form label의 밑줄  */
+/* 회원가입 form label의 밑줄 
 form div>label{
 	border-bottom: 1px solid black;
+} */
+
+/* login form에서 사용되는부분 */
+
+.loginBtnContainer{
+	display: flex;
+	justify-content: center;
 }

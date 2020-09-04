@@ -8,9 +8,9 @@ public class UserDTO {
 	private String userBirth;	//생년월일
 	private String userEmail;	//이메일
 	private int admin;	//등급 일반회원0 관리자1
-	private String userEmailAgreement;	//이메일수신동의
-	private String userPersonalInfo;	//개인정보 약관동의
-	private String userPrivacy;			//회사정책 동의
+	private String emailAgreement;	//이메일수신동의 y,n
+	private String personalInfo;	//개인정보 약관동의 y 
+	private String privacy;			//회사정책 동의 y
 	
 	public String getUserName() {
 		return userName;
@@ -48,35 +48,29 @@ public class UserDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserEmailAgreeMent() {
-		return userEmailAgreement;
-	}
-	public void setUserEmailAgreeMent(String userEmailAgreeMent) {
-		this.userEmailAgreement = userEmailAgreeMent;
-	}
 	public int getAdmin() {
 		return admin;
 	}
 	public void setAdmin(int admin) {
 		this.admin = admin;
 	}
-	public String getUserEmailAgreement() {
-		return userEmailAgreement;
+	public String getEmailAgreement() {
+		return emailAgreement;
 	}
-	public void setUserEmailAgreement(String userEmailAgreement) {
-		this.userEmailAgreement = userEmailAgreement;
+	public void setEmailAgreement(String emailAgreement) {
+		this.emailAgreement = emailAgreement;
 	}
-	public String getUserPersonalInfo() {
-		return userPersonalInfo;
+	public String getPersonalInfo() {
+		return personalInfo;
 	}
-	public void setUserPersonalInfo(String userPersonalInfo) {
-		this.userPersonalInfo = userPersonalInfo;
+	public void setPersonalInfo(String personalInfo) {
+		this.personalInfo = personalInfo;
 	}
-	public String getUserPrivacy() {
-		return userPrivacy;
+	public String getPrivacy() {
+		return privacy;
 	}
-	public void setUserPrivacy(String userPrivacy) {
-		this.userPrivacy = userPrivacy;
+	public void setPrivacy(String privacy) {
+		this.privacy = privacy;
 	}
 	
 	

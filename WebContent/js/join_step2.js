@@ -14,7 +14,7 @@ $(function(){
         var userPhone=$('#userPhone');
         var userBirth=$('#userBirth');
         var userEmail=$('#userEmail');
-        var EmailAgree=$("input[name='EmailAgree']:checked");
+        var emailAgree=$("input[name='emailAgreement']:checked");
 
         if(userName.val()==""){
             alert("이름을 입력해주세요");
@@ -74,7 +74,7 @@ $(function(){
             userEmail.focus();
             return;
         }
-        if(EmailAgree.length===0){
+        if(emailAgree.length===0){
             alert("수신여부를 선택해주세요");
             return;
         }

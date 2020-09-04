@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.user.UserDAO;
+import com.user.UserDTO;
+
 /**
  * Servlet implementation class userRegister
  */
@@ -23,12 +26,39 @@ public class UserRegister extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+			String userName= request.getParameter("userName");
+			String userId= request.getParameter("userId");
+			String userPwd= request.getParameter("userPwd");
+			String userPhone= request.getParameter("userPhone");
+			String userBirth= request.getParameter("userBirth");
+			String userEmail= request.getParameter("userEmail");
+			int admin= Integer.parseInt(request.getParameter("admin"));
+			String emailAgreement= request.getParameter("emailAgreement");
+
+			UserDTO user = new UserDTO();
+			user.setUserName(userName);
+			user.setUserId(userId);
+			user.setUserPwd(userPwd);
+			user.setUserPhone(userPhone);
+			user.setUserBirth(userBirth);
+			user.setUserEmail(userEmail);
+			user.setAdmin(admin);
+			user.setEmailAgreement(emailAgreement);
 			
-			PrintWriter script = response.getWriter();
-			script.println("<script>");
-			script.println("alert('가입성공')");
-			script.println("location.href='./view/index.jsp'");
-			script.println("</script>");
+			
+			
+			UserDAO userDAO = UserDAO.getInstance();
+			int result = userDAO.insertUser(user); //result 0,1
+			if(result==1) {
+				PrintWriter script = response.getWriter();
+				script.println("<script>");
+				script.println("alert('가입성공')");
+				script.println("location.href='./view/index.jsp'");
+				script.println("</script>");
+			}else {
+				
+			}
+			
 		
 			//다된경우 메인화면으로!
 			//response.sendRedirect("./view/index.jsp");

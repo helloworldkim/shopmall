@@ -42,7 +42,7 @@
             </div>
             <!-- 상단 nav bar -->
             <nav class="topNavContainer">
-                <a href="">로그인</a>
+                <a href="login.jsp">로그인</a>
                 <a href="join_step1.jsp">회원가입</a>
                 <a href="">마이페이지</a>
                 <a href="">고객센터</a>
@@ -131,11 +131,11 @@
                 <label for="userEmail">메일수신</label>
                 <div class="innerGroup">
                     <label>
-                        <input type="radio" class="formInput" name="EmailAgree" value="동의">
+                        <input type="radio" class="formInput" name="emailAgreement" value="Y">
                         <span>동의</span>
                     </label>
                     <label>
-                        <input type="radio" class="formInput" name="EmailAgree" value="거부">
+                        <input type="radio" class="formInput" name="emailAgreement" value="N">
                         <span>거부</span>
                     </label>
                 </div>

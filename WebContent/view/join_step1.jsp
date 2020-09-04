@@ -43,7 +43,7 @@
             </div>
             <!-- 상단 nav bar -->
             <nav class="topNavContainer">
-                <a href="">로그인</a>
+                <a href="login.jsp">로그인</a>
                 <a href="join_step1.jsp">회원가입</a>
                 <a href="">마이페이지</a>
                 <a href="">고객센터</a>

@@ -5,31 +5,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATTRANGS</title>
-    <!-- slideshow css -->
-    <link rel="stylesheet" href="../css/slideshow.css">
+    <title>로그인</title>
     <!-- topMenu css -->
     <link rel="stylesheet" href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
     <link rel="stylesheet" href="../css/Menu/mainMenu.css">
-    <!-- footer css -->
+    <!-- footerMenu css -->
     <link rel="stylesheet" href="../css/Menu/footerMenu.css">
     <!-- bootstrapcss -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
+    <!--join css  -->
+    <link rel="stylesheet" href="../css/join/join.css">
     <!-- jquery cdn  -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- jquery ui cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
     <!--font aswsome cdn  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- slider js -->
-    <script src="../js/slideshow.js"></script>
-    <!-- top fixed Menu js -->
-    <script src="../js/topFixedMenu.js"></script>
+    <!-- login js -->
+    <script src="../js/login.js"></script>
 </head>
 <body>
 <!-- 헤더부분 -->
-<header>
+<header >
         <div class="topContainer">
             <!-- 검색부분 -->
             <div class="searchContainer">
@@ -37,14 +35,14 @@
                 <i class="fas fa-search" id='btnSearch'></i>
             </div>
             <!-- 쇼핑몰 메인부분 -->
-            <div>
+             <div>
                 <a href="index.jsp">
                     <h1>ATTRANGS</h1>
                     <p>IT'S FLOWER MOMENT</p>
                 </a>
             </div>
             <!-- 상단 nav bar -->
-            <nav class="topNavContainer" role='navigation_member'>
+            <nav class="topNavContainer">
                 <a href="login.jsp">로그인</a>
                 <a href="join_step1.jsp">회원가입</a>
                 <a href="">마이페이지</a>
@@ -56,7 +54,7 @@
             </nav>
         </div>
         <!-- top 두번째 nav부분 -->
-        <nav class="topSecondNavContainer" role='navigation_menu'>
+        <nav class="topSecondNavContainer">
             <ul class="productList">
                 <li><a href="#"><span>베스트아이템</span></a></li>
                 <li><a href="#"><span>신상품</span></a></li>
@@ -72,83 +70,32 @@
                 <li><a href="#"><span>가방</span></a></li>
             </ul>
         </nav>
-    <!-- 슬라이더 부분 -->
-    <div class="slideshow">
-        <!-- 슬라이더 이미지 부분 -->
-        <div class="slideshow_slides">
-            <a href=""><img src="../img/slider1.jfif" alt="slide1"></a>
-            <a href=""><img src="../img/slider2.jfif" alt="slide2"></a>
-            <a href=""><img src="../img/slider3.jfif" alt="slide3"></a>
-            <a href=""><img src="../img/slider4.jfif" alt="slide4"></a>
-        </div>
-        <!-- prev,next 버튼부분 -->
-        <div class="slideshow_nav">
-            <a href="#" class="prev"><i class="fas fa-chevron-left" alt="prev"></i></a>
-            <a href="#" class="next"><i class="fas fa-chevron-right" alt="next"></i></a>
-        </div>
-        <!-- indicator부분 -->
-        <div class="indicator">
-        	<a href="" class="active">1</a>
-            <a href="">2</a>
-            <a href="">3</a>
-            <a href="">4</a>
-        </div>
-    </div>
 </header>
 <!-- 메인부분 -->
 <main>
-    <header>
-        <div class="mainHeader">    
-            <h1>Best Item</h1>
+    <header class='join_header'>
+        <div>    
+            <h1>로그인</h1>
         </div>
     </header>
-    <!-- 아이템 리스트부분 -->
-    <section>
-        <div>
-            <ul class="productsUl">
-                <li class="productsList">
-                    <div class="img">
-                        <a href="#"><img src="../img/slider1.jfif" alt="임시이미지"></a>
-                    </div>
-                    <div class="info">
-                        <h2>상품명</h2>
-                        <p>설명</p>
-                        <p>가격</p>
-                    </div>
-                </li>
-                <li class="productsList">
-                    <div class="img">
-                        <a href="#"><img src="../img/slider1.jfif" alt="임시이미지"></a>
-                    </div>
-                    <div class="info">
-                        <h2>상품명</h2>
-                        <p>설명</p>
-                        <p>가격</p>
-                    </div>
-                </li>
-                <li class="productsList">
-                    <div class="img">
-                        <a href="#"><img src="../img/slider1.jfif" alt="임시이미지"></a>
-                    </div>
-                    <div class="info">
-                        <h2>베스트상품 아우터</h2>
-                        <p>가격이 가장싼 제품</p>
-                        <p>19000원</p>
-                    </div>
-                </li>
-                <li class="productsList">
-                    <div class="img">
-                        <a href="#"><img src="../img/slider1.jfif" alt="임시이미지"></a>
-                    </div>
-                    <div class="info">
-                        <h2>상품명</h2>
-                        <p>설명</p>
-                        <p>가격</p>
-                    </div>
-                </li>
-            </ul>         
-        </div>
+    <section class="main_section">
+        <form action="/UserLogin" id='frm' method="post">
+            <div class="form-group">
+                <label for="userid">아이디:</label>
+                <input type="text" class="form-control" id='userId' name="userId">
+            </div>
+            <div class="form-group">
+                <label for="">비밀번호:</label>
+                <input type="password" class="form-control" id="userPwd" name="userPwd">
+            </div>
+            <div class="loginBtnContainer">
+                <button class="joinBtn" type="button" id="joinBtn">로그인</button>
+                <input type="reset" class="joinBtn" value="취소">
+            </div>
+        </form>
+            
     </section>
+    
 </main>
 <!-- 풋터부분 -->
 <footer class="footerContainer">
@@ -198,7 +145,6 @@
         </div>
     </div>
 </footer>
-    
     
    
     
