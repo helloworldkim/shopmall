@@ -58,9 +58,13 @@
                 <a href="">마이페이지</a>
                 <a href="">고객센터</a>
                 <a href="">게시판(소통해요)</a>
+          	<c:if test="${sessionScope.admin==1}">
+           		<a href="#">관리자페이지</a>
+           	</c:if>
                 <i class="fas fa-shopping-bag"></i>
                 <i class="fas fa-heart"></i>
                 <i class="fas fa-star"></i>
+            
             </nav>
             
         </div>

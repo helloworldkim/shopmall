@@ -42,6 +42,7 @@ public class UserLogin extends HttpServlet {
 			}
 			UserDAO userDAO = UserDAO.getInstance();
 			int result=userDAO.findUserById(userId, userPwd);
+			int admin=userDAO.getAdmin(userId);
 			
 			//아이디가 조회안되는경우
 			if(result==0) {
@@ -51,7 +52,9 @@ public class UserLogin extends HttpServlet {
 				script.println("</script>");
 			}else {
 				if(result==1) {
+					//session객체에 userId와 admin를 저장함 admin값으로 구별 후 관리자의 경우 관리자페이지로 가는 링크를 넣음
 					session.setAttribute("userId", userId);
+					session.setAttribute("admin", admin);
 					script.println("<script>");
 					script.println("alert('로그인성공')");
 					script.println("location.href='./view/index.jsp'");

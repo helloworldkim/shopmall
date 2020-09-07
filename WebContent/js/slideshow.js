@@ -11,11 +11,19 @@ $(function(){
     var easing = 'easeInOutExpo';
     var interval = 3000; //
     //슬라이드마다 할일 slides, left 0%, 100% , 200%, 300% 옆으로 나열하는부분
-    slides.each(function(i){
-        var newLeft = i*100+'%';
-        $(this).css({left:newLeft});
-        indicatorHTML += '<a href="">'+(i+1)+'</a>';
-    })
+    function slidesEach(slides){
+        $(slides).each(function(i){
+            var newLeft = i*100+'%';
+            $(this).css({left:newLeft});
+            indicatorHTML += '<a href="">'+(i+1)+'</a>';
+        })
+    }
+    slidesEach(slides);
+    // slides.each(function(i){
+    //     var newLeft = i*100+'%';
+    //     $(this).css({left:newLeft});
+    //     indicatorHTML += '<a href="">'+(i+1)+'</a>';
+    // })
     //indicator 기본값 넣음
     indicator.html(indicatorHTML);
     indicator.find('a').eq(0).addClass('active');

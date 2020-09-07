@@ -106,13 +106,13 @@ public class UserDAO {
 		return -1; //db오류 -1
 	}
 	//id중복체크 메서드
-	public int idCheck(String userid) {
+	public int idCheck(String userId) {
 		String sql = "select count(userid) from shopuser where userid=?";
 		int count=0;
 		try {
 			conn=getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, userid);
+			pstmt.setString(1, userId);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 			return count = rs.getInt(1);//실행결과가 있으면 1반환
@@ -125,5 +125,26 @@ public class UserDAO {
 		}
 
 		return count; //-1 db오류
+	}
+
+	public int getAdmin(String userId) {
+		String sql = "select admin from shopuser where userid=?";
+		int count=-1;
+		try {
+			conn=getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			return count = rs.getInt(1);//실행결과가 있으면 admin반환
+			}
+			return count; //없으면 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeConnection(conn, pstmt, null, rs);
+		}
+
+		return count; //db오류 -1
 	}
 }
