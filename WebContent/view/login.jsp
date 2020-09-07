@@ -111,6 +111,7 @@
                             (토/일/공휴일은 휴무)
                         </p>
                     </div>
+                    <!-- div사이에 선긋기 부분 -->
                     <div style="border-right: 1px solid black; width: 1px; height: 97px; position: absolute; top: 25px; left: 170px;"></div>
                     <div>
                         <h1>BANK INFO</h1>
@@ -140,6 +141,7 @@
             Address. 서울특별시 성동구 하왕십리동 286-2<br>
             (예약방문만 가능합니다 예약은 1:1문의 게시판을 이용해 주세요)
         </div>
+        <!-- 추후 notice list를 동적으로 받아올 부분 -->
         <div class="footerInfoNotice">
             Notice
         </div>

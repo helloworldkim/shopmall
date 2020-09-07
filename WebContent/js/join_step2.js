@@ -80,4 +80,8 @@ $(function(){
         }
         frm.submit();
     });
+    //우편번호 팝업 띄우는 부분
+    $("#zipcodeCheckBtn").click(function(){
+        window.open("zipCheck.jsp","_blank","width=700 height=400")
+    });
 });

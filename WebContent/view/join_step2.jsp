@@ -128,6 +128,18 @@
                 <input type="email" class="formInput" id="userEmail" name="userEmail">
             </div>
             <div class="group">
+                <label for="userZipcode">우편번호</label>
+                <div class="input-group mb-3">
+                     <input type="email" class="formInput" id="userZipcode" name="userZipcode">
+                     <span id="zipcodeCheckBtn" class="checkBtn input-group-append">조회하기</span>
+                </div>
+            </div>
+            <div class="group">
+                <label for="userAddress">주소</label>
+                <input type="email" class="formInput" id="userAddress" name="userAddress">
+            </div>
+            
+            <div class="group">
                 <label for="userEmail">메일수신</label>
                 <div class="innerGroup">
                     <label>
