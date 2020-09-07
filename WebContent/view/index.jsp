@@ -97,10 +97,13 @@
         </div>
         <!-- indicator부분 -->
         <div class="indicator">
+        <!--indicator는 javascript로 매번 새로그려짐  -->
+        <!--
         	<a href="" class="active">1</a>
             <a href="">2</a>
             <a href="">3</a>
             <a href="">4</a>
+        -->
         </div>
     </div>
 </header>

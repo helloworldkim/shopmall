@@ -103,7 +103,7 @@
                 </div>
             </div>
             <!-- 중복체크전까지는 none상태 -->
-            <div class="group" id="checkbox"></div>
+            <div id="checkbox"></div>
             <div class="group">
                 <label for="userPwd">비밀번호</label>
                 <input type="password" class="formInput" id="userPwd" name="userPwd">
@@ -114,10 +114,7 @@
             </div>
             <div class="group">
                 <label for="userPhone">휴대폰</label>
-                <div class="input-group mb-3">
-	                <input type="text" class="formInput" id="userPhone" name="userPhone" placeholder="ex 010-2222-0000">
-	                <span id="userPhoneCheckBtn" class="checkBtn input-group-append">휴대폰인증</span>
-                </div>
+                <input type="text" class="formInput" id="userPhone" name="userPhone" placeholder="ex 010-2222-0000">
             </div>
             <div class="group">
                 <label for="userBirth">생년월일</label>

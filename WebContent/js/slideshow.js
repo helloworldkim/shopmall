@@ -10,15 +10,15 @@ $(function(){
     var duration = 500;
     var easing = 'easeInOutExpo';
     var interval = 3000; //
-    //슬라이드마다 할일 slides, left 0%, 100% , 200%, 300% 옆으로 나열
+    //슬라이드마다 할일 slides, left 0%, 100% , 200%, 300% 옆으로 나열하는부분
     slides.each(function(i){
         var newLeft = i*100+'%';
         $(this).css({left:newLeft});
-        //<a href="">1</a>
         indicatorHTML += '<a href="">'+(i+1)+'</a>';
     })
-    //console.log(indicatorHTML);
+    //indicator 기본값 넣음
     indicator.html(indicatorHTML);
+    indicator.find('a').eq(0).addClass('active');
     
     //슬라이드 이동함수
     function goToSlide(index){
@@ -32,10 +32,8 @@ $(function(){
 
     }
     //처음인지 마지막인지 검사하는메서드
-    //처음이면 currentIndex = 0; 마지막이면 slideCount-1
-    function updateNav(){
-    }
-
+    //처음이면 currentIndex = 0; 마지막이면 slideCount-
+    
     //인디케이터로 이동함수
     indicator.find('a').click(function(e){
         e.preventDefault();

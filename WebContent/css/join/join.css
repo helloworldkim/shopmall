@@ -126,14 +126,16 @@ fieldset{
 	margin-bottom: 20px;
 	border: 1px solid black;
 }
-/* 중복체크시 나타날부분 */
+/* 체크박스 가운데 위치 */
 #checkbox{
-	display: none;
-} 
-.visible{
-	display: inline;
-}
+		margin: 0 auto;
+		width: 100%;
+		height: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
+}
 /* 회원가입 form label의 밑줄 
 form div>label{
 	border-bottom: 1px solid black;

@@ -54,7 +54,7 @@ public class UserDAO {
 	}
 	//유저insert
 	public int insertUser(UserDTO user) {
-		String sql= "insert into shopuser values(?,?,?,?,?,?,?,?,'Y','Y')";
+		String sql= "insert into shopuser values(?,?,?,?,?,?,?,?,'Y','Y',?,?)";
 		int result =0;
 		try {
 			conn= getConnection();
@@ -67,6 +67,8 @@ public class UserDAO {
 			pstmt.setString(6, user.getUserEmail());
 			pstmt.setInt(7, user.getAdmin());
 			pstmt.setString(8,user.getEmailAgreement());
+			pstmt.setInt(9, user.getUserZipcode());
+			pstmt.setString(10, user.getUserAddress());
 			result = pstmt.executeUpdate(); //insert 됬을때 1반환
 			
 		} catch (Exception e) {
@@ -103,5 +105,25 @@ public class UserDAO {
 		}
 		return -1; //db오류 -1
 	}
-	
+	//id중복체크 메서드
+	public int idCheck(String userid) {
+		String sql = "select count(userid) from shopuser where userid=?";
+		int count=0;
+		try {
+			conn=getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userid);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+			return count = rs.getInt(1);//실행결과가 있으면 1반환
+			}
+			return count; //없으면 0;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			closeConnection(conn, pstmt, null, rs);
+		}
+
+		return count; //-1 db오류
+	}
 }

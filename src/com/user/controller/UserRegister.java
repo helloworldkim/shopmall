@@ -32,6 +32,8 @@ public class UserRegister extends HttpServlet {
 			String userPhone= request.getParameter("userPhone");
 			String userBirth= request.getParameter("userBirth");
 			String userEmail= request.getParameter("userEmail");
+			int userZipcode= Integer.parseInt(request.getParameter("userZipcode"));
+			String userAddress= request.getParameter("userAddress");
 			int admin= Integer.parseInt(request.getParameter("admin"));
 			String emailAgreement= request.getParameter("emailAgreement");
 
@@ -42,6 +44,8 @@ public class UserRegister extends HttpServlet {
 			user.setUserPhone(userPhone);
 			user.setUserBirth(userBirth);
 			user.setUserEmail(userEmail);
+			user.setUserZipcode(userZipcode);
+			user.setUserAddress(userAddress);
 			user.setAdmin(admin);
 			user.setEmailAgreement(emailAgreement);
 			

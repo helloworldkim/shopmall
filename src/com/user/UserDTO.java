@@ -7,6 +7,8 @@ public class UserDTO {
 	private String userPhone;	//휴대폰
 	private String userBirth;	//생년월일
 	private String userEmail;	//이메일
+	private int userZipcode; //우편번호
+	private String userAddress; //주소
 	private int admin;	//등급 일반회원0 관리자1
 	private String emailAgreement;	//이메일수신동의 y,n
 	private String personalInfo;	//개인정보 약관동의 y 
@@ -72,6 +74,19 @@ public class UserDTO {
 	public void setPrivacy(String privacy) {
 		this.privacy = privacy;
 	}
+	public int getUserZipcode() {
+		return userZipcode;
+	}
+	public void setUserZipcode(int userZipcode) {
+		this.userZipcode = userZipcode;
+	}
+	public String getUserAddress() {
+		return userAddress;
+	}
+	public void setUserAddress(String userAddress) {
+		this.userAddress = userAddress;
+	}
+	
 	
 	
 	
