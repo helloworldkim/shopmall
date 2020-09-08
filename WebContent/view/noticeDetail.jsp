@@ -8,14 +8,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ATTRANGS</title>
+    <!-- bootstrapcss -->
+    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
     <!-- slideshow css -->
     <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
     <link rel="stylesheet" href="../css/Menu/topMenu.css">
     <!-- footer css -->
     <link rel="stylesheet" href="../css/Menu/footerMenu.css">
-    <!-- bootstrapcss -->
-    <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
     <!-- jquery cdn  -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- jquery ui cdn -->

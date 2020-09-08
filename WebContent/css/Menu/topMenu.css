@@ -84,6 +84,10 @@ table {
     border-spacing: 0;
 
 }
+a{
+	text-decoration: none;
+	color:black;
+}
 /* css 사이즈 root설정 */
 :root{
     --main-padding : 10px;

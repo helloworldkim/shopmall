@@ -1,5 +1,5 @@
 function createLiTag(item){
-    return `<a href='/NoticeDetail?bbsId=${item.bbsId}'><li>${item.title}</li></a>`
+    return `<a href='/NoticeDetail?bbsId=${item.bbsId}'><li class='noticeList'>${item.title}</li></a>`
 }
 $(function(){
     $.ajax({
