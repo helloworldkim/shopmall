@@ -15,18 +15,19 @@ $(function(){
         $(slides).each(function(i){
             var newLeft = i*100+'%';
             $(this).css({left:newLeft});
-            indicatorHTML += '<a href="">'+(i+1)+'</a>';
+            //indicatorHTML += '<a href="">'+(i+1)+'</a>';           
         })
     }
+    var createIndicator = slides.map(function(index){
+        if(index==0){//첫번째 a태그에 active 클래스 추가함
+            indicatorHTML+= `<a href='' class='active'><${index+1}</a>`
+        }
+        else{
+            indicatorHTML+= `<a href=''>${index+1}</a>`
+        }
+    });
     slidesEach(slides);
-    // slides.each(function(i){
-    //     var newLeft = i*100+'%';
-    //     $(this).css({left:newLeft});
-    //     indicatorHTML += '<a href="">'+(i+1)+'</a>';
-    // })
-    //indicator 기본값 넣음
     indicator.html(indicatorHTML);
-    indicator.find('a').eq(0).addClass('active');
     
     //슬라이드 이동함수
     function goToSlide(index){
@@ -38,10 +39,7 @@ $(function(){
         // indicator.find('a').eq(currentIndex).addClass('active');
         indicator.find('a').eq(currentIndex).addClass('active').siblings().removeClass('active');
 
-    }
-    //처음인지 마지막인지 검사하는메서드
-    //처음이면 currentIndex = 0; 마지막이면 slideCount-
-    
+    }    
     //인디케이터로 이동함수
     indicator.find('a').click(function(e){
         e.preventDefault();

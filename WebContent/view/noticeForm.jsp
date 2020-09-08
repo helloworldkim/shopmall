@@ -1,64 +1,59 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
+    <title>ATTRANGS</title>
+    <!-- slideshow css -->
+    <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
     <link rel="stylesheet" href="../css/Menu/topMenu.css">
-    <!-- MainMenu css -->
-    <link rel="stylesheet" href="../css/Menu/mainMenu.css">
-    <!-- footerMenu css -->
+    <!-- footer css -->
     <link rel="stylesheet" href="../css/Menu/footerMenu.css">
     <!-- bootstrapcss -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
-    <!--join css  -->
-    <link rel="stylesheet" href="../css/join/join.css">
     <!-- jquery cdn  -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- jquery ui cdn -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
     <!--font aswsome cdn  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- login js -->
-    <script src="../js/login.js"></script>
+    <!-- top fixed Menu js -->
+    <script src="../js/topFixedMenu.js"></script>
     <!-- noticeList를 동적으로 받아오는 js파일 -->
-    <script src="../js/footNoticeList.js"></script>
+    <script src="../js/footNoticeList.js"></script> 
 </head>
 <body>
 <%@ include file="include/header.jsp" %>
-<!-- 메인부분 -->
+<!-- 작성 form부분 -->
 <main>
-    <header class='join_header'>
-        <div>    
-            <h1>로그인</h1>
-        </div>
-    </header>
-    <section class="main_section">
-        <form action="/UserLogin" id='frm' method="post">
-            <div class="form-group">
-                <label for="userid">아이디:</label>
-                <input type="text" class="form-control" id='userId' name="userId">
-            </div>
-            <div class="form-group">
-                <label for="">비밀번호:</label>
-                <input type="password" class="form-control" id="userPwd" name="userPwd">
-            </div>
-            <div class="loginBtnContainer">
-                <button class="joinBtn" type="button" id="joinBtn">로그인</button>
-                <input type="reset" class="joinBtn" value="취소">
-            </div>
-        </form>
-            
-    </section>
-    
+	<div class="container">
+	    <form action="/NoticeInsert" method="post">
+			<table class="table" style="text-align: center">
+				<thead>
+					<tr>
+						<th colspan="2" style="text-align: center; border: 1px solid black">공지사항 작성</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td><input type="text" class="form-control" name="bbsTitle" placeholder="공지사항 제목"></td>
+					</tr>
+				</tbody>
+			</table>
+			<textarea class="form-control" style="text-align: left; border: 1px solid black; 
+			height:350px"name="bbsContent" placeholder="공지사항 내용" maxlength="2048"></textarea>
+			<input type="submit" class="btn btn-primary pull-right" value="작성">
+			<input type="reset" class="btn btn-primary pull-right" value="초기화">
+			<a href="/Notice" class="btn btn-primary pull-right">게시판</a>
+		</form>
+	</div>
 </main>
 <%@ include file="include/footer.jsp" %>
-    
-   
-    
+
 </body>
 </html>
