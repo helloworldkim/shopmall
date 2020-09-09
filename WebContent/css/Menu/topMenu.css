@@ -139,7 +139,7 @@ a{
 }
 
 .topNavContainer{
-    width: 500px;
+    width: 600px;
     height: 30px;
     display: flex;
     flex-direction: row;
@@ -185,4 +185,8 @@ a{
     position: fixed;
     top: 0;
     background-color: white;
+}
+/*bootstrap dropdown 포인터 변경위해서 만든클래스  */
+.dropdown-container{
+	cursor: pointer;
 }

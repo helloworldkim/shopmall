@@ -7,7 +7,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ATTRANGS</title>
+    <title>공지사항</title>
+    <!--bootsrtap dropdown 적용을 위해 가져온코드  -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+   	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!-- bootstrapcss -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
     <!-- slideshow css -->
@@ -30,7 +35,7 @@
     <script src="../js/footNoticeList.js"></script>
 </head>
 <body>
-<%@ include file="include/header.jsp" %>
+<jsp:include page="include/header.jsp"/>
 <!-- 게시판부분 -->
 <main>
     <div class="container">
@@ -63,14 +68,47 @@
 				</tbody>
 			</table>
         </div>
+        <!--페이징 부분  -->
+        <c:set var="pageNumber" value="${(empty param.pageNumber)?1:(param.pageNumber)}"/>
+        <!--보여질 페이지수 5개  -->
+        <c:set var="startNumber" value="${pageNumber-(pageNumber-1)%5}"/>
+		<c:set var="lastNumber" value="${lastNumber}"/>
+		<input type="hidden" id="pageNumHidden" value="${(empty param.pageNumber)?1:(param.pageNumber)}">
+		<div class="container paginationbox">
+			<ul class="pagination" id="paginationUl">
+				<c:if test="${pageNumber>startNumber}">
+					<li class="page-item">
+						<a href="?pageNumber=${pageNumber-1}" class="page-item">이전</a>
+					</li>
+				</c:if>
+				<c:if test="${pageNumber-1<1}">
+					<li class="page-item">
+						<a class="page-item" onclick="alert('이전페이지가 없습니다')">이전</a>
+					</li>
+				</c:if>
+				<c:forEach var="i" begin="0" end="4">
+					<li class="page-item noticeList"><a href="?pageNumber=${startNumber+i}">${startNumber+i}</a>
+				</c:forEach>
+				<c:if test="${pageNumber+1<=lastNumber}">
+					<li class="page-item">
+						<a href="?pageNumber=${pageNumber+1}" class="page-item">다음</a>
+					</li>
+				</c:if>
+				<c:if test="${pageNumber+1>lastNumber}">
+					<li class="page-item">
+						<a class="page-item" onclick="alert('다음페이지가 없습니다')">다음</a>
+					</li>
+				</c:if>
+			</ul>
+		</div>
         <!--관리자로 로그인된 경우에만 작성가능하도록 설정  -->
         <c:if test="${sessionScope.admin==1}">
-        <!-- 누르면 noticeForm.jsp 파일로 가도록 설정됨 -->
+        	<!-- 누르면 noticeForm.jsp 파일로 가도록 설정됨 -->
 			<button class="btn btn-primary pull-right" type="button" id="noticeBtn">작성하기</button>
        	</c:if>
 	</div>
 </main>
-<%@ include file="include/footer.jsp" %>
+<jsp:include page="include/footer.jsp"/>
 
 </body>
 </html>

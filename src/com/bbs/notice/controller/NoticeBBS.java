@@ -26,18 +26,32 @@ public class NoticeBBS extends HttpServlet {
    
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		
-		
-		ArrayList<NoticeDTO> noticeList = NoticeDAO.getInstance().getAllNoticeList();
+		int pageNumber=1;
+		if(request.getParameter("pageNumber")!=null) {
+			pageNumber= Integer.parseInt(request.getParameter("pageNumber"));
+		}
+		int totalPage; //총 페이지 수
+		int lastNumber; //마지막페이지 넘버
+		int totalNoitce = NoticeDAO.getInstance().getNoticeCount();
+		if(totalNoitce%10==0) {
+			totalPage =	totalNoitce/10;
+			lastNumber = totalPage;
+		}else {
+			
+			totalPage =	totalNoitce/10+1;
+			lastNumber = totalPage;
+		}
+		ArrayList<NoticeDTO> noticeList = NoticeDAO.getInstance().getNoticeList(pageNumber);
 		
 		request.setAttribute("noticeList", noticeList);
+		request.setAttribute("lastNumber", lastNumber);
 		
 		request.getRequestDispatcher("./view/noticeBBS.jsp").forward(request, response);
 	
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		//noticeList를 ajax사용해서 주는 작업
-		//가장 최신 공지사항 5개만 받아올 메서드
+		//가장 최신 공지사항 10개 받아올 메서드
 		ArrayList<NoticeDTO> noticeList = NoticeDAO.getInstance().getAllNoticeList();
 		JSONArray jarr = new JSONArray();
 		for(NoticeDTO n : noticeList) {

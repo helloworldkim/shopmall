@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- 헤더부분 -->
 <header>
         <div class="topContainer">
@@ -17,20 +18,27 @@
             </div>
             <!-- 상단 nav bar -->
             <nav class="topNavContainer" role='navigation_member'>
-            <c:choose>
-            <c:when test="${empty sessionScope.userId}">
+			<c:if test="${empty sessionScope.userId}">
             	<a href="../view/login.jsp">로그인</a>
-           	</c:when>
-           	 <c:otherwise>
+            </c:if>
+			<c:if test="${not empty sessionScope.userId}">
             	<a href="/UserLogout">로그아웃</a>
-           	</c:otherwise>
-           	</c:choose>
+			</c:if>
                 <a href="../view/join_step1.jsp">회원가입</a>
                 <a href="">마이페이지</a>
                 <a href="">고객센터</a>
                 <a href="">게시판(소통해요)</a>
           	<c:if test="${sessionScope.admin==1}">
-           		<a href="#">관리자페이지</a>
+                <div class="dropdown">
+                <div class="dropdown-toggle dropdown-container" data-toggle="dropdown">관리자페이지</div>
+                    <div class="dropdown-menu">
+                        <a href="/Notice" class="dropdown-item">공지사항</a>
+                        <a href="../view/productForm.jsp" class="dropdown-item">상품등록</a>
+                        <a href="#" class="dropdown-item">회원관리</a>
+                    </div>
+                </div>
+                
+
            	</c:if>
                 <i class="fas fa-shopping-bag"></i>
                 <i class="fas fa-heart"></i>

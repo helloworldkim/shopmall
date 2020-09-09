@@ -88,11 +88,21 @@ $(function(){
     function stopTimer(){
         clearInterval(timer);
     }
-
+    // 마우스 들어가고 나갈때 setinterval 실행 멈춤 부분
     container.mouseenter(function(){
         stopTimer();
     }).mouseleave(function(){
         startTimer();
     });
 
+    //slide 수정 미리보기 부분
+    $("#slideChangeBtn").click(function(){
+        var slideNumber = $("#slideNumber").val();
+        var slideURL = $("#slideURL").val();
+        var slideTag = $(".slideshow_slides").find("a"); //모든 a태그
+        //eq로 찾을때는 0,1,2,3순서라 +1적용함
+        slideTag.eq(slideNumber+1).find("img").attr("src",slideURL);
+        console.log(slideTag.eq(slideNumber-1).find("img").attr("src",slideURL));
+
+    });
 });
