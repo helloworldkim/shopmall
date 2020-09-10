@@ -28,35 +28,76 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
     <!--font aswsome cdn  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- slider js -->
-    <script src="../js/slideshow.js"></script>
     <!-- top fixed Menu js -->
     <script src="../js/topFixedMenu.js"></script>
     <!-- noticeList를 동적으로 받아오는 js파일 -->
     <script src="../js/footNoticeList.js"></script>
-    <!-- item을 동적으로 받아오는 js! -->
-    <script src="../js/index.js"></script>
+    <!-- productView css파일 -->
+    <link rel="stylesheet" href="../css/product/productView.css">
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>
 <%@ include file="include/slider.jsp" %> --%>
 <jsp:include page="include/header.jsp"/>
-<jsp:include page="include/slider.jsp"/>
 <!-- 메인부분 -->
 <main>
-    <header>
-        <div class="mainHeader">    
-            <h1>Best Item</h1>
-        </div>
-    </header>
-    <!-- 아이템 리스트부분 -->
-    <section>
-        <div>
-            <ul class="productsUl">
-                <!-- 리스트는 db에서 받아오는중 -->
-            </ul>         
+   <section class="container my-5">
+   <c:set var="p" value="${product}"/>
+        <div class="productContainer">
+            <div class="imgBox">
+                <img src="../product/${p.productImg}"alt="상품이미지">
+            </div>
+            <div class="productBuyInfo">
+                <div>
+                    <h3 class="productName">${p.productId} ${p.productName}</h1>
+                </div>
+                <div class="priceBox">
+                    <p>
+                        <span class="salePersent">${p.productSalePer}%</span>
+                        <span class="salePrice">${p.productSalePrice}</span>원
+                        <span class="price">${p.productPrice}원</span>
+                    </p>
+                </div>
+                <div>
+                    <table>
+                        <tbody>
+                        <tr>
+                            <th>혜택</th>
+                            <td>구매혜택</td> 
+                            <td>무이자할부</td> 
+                            <td>적립금 지급</td> 
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>지원색상</th>
+                            <td>red</td> 
+                            <td>white</td> 
+                            <td>black</td> 
+                        </tr>
+                    </table>
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th>사이즈</th>
+                            <td>Free</td> 
+                            <td>small</td>
+                            <td>XL</td> 
+                            <td>XLL</td> 
+                        </tr>
+                    </table>
+                </div>
+                <div>상품수량 및 사이즈 색상 설정등</div>
+                <div>총금액</div>
+                <div class="buyingBox"><a href="#" class="productBuyBtn">구매하기</a></div>
+            </div>
         </div>
     </section>
+    <!--${p.productId},${p.productName},${p.shortDetail}  -->
 </main>
 <%-- <%@ include file="include/footer.jsp" %>   --%>
 <jsp:include page="include/footer.jsp"/>

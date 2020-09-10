@@ -25,7 +25,13 @@
             	<a href="/UserLogout">로그아웃</a>
 			</c:if>
                 <a href="../view/join_step1.jsp">회원가입</a>
-                <a href="">마이페이지</a>
+                <div class="dropdown">
+                <div class="dropdown-toggle dropdown-container" data-toggle="dropdown">마이페이지</div>
+                    <div class="dropdown-menu">
+                        <a href="/MyProductList" class="dropdown-item">내가 본 상품목록</a>
+                        <a href="#" class="dropdown-item">내 정보수정</a>
+                    </div>
+                </div>
                 <a href="">고객센터</a>
                 <a href="">게시판(소통해요)</a>
           	<c:if test="${sessionScope.admin==1}">
@@ -48,19 +54,20 @@
         </div>
         <!-- top 두번째 nav부분 -->
         <nav class="topSecondNavContainer" role='navigation_menu'>
-            <ul class="productList">
-                <li><a href="#"><span>베스트아이템</span></a></li>
-                <li><a href="#"><span>신상품</span></a></li>
-                <li><a href="#"><span>드레스</span></a></li>
-                <li><a href="#"><span>블라우스</span></a></li>
-                <li><a href="#"><span>아우터</span></a></li>
-                <li><a href="#"><span>니트/티셔츠</span></a></li>
-                <li><a href="#"><span>스커트</span></a></li>
-                <li><a href="#"><span>팬츠</span></a></li>
-                <li><a href="#"><span>주얼리</span></a></li>
-                <li><a href="#"><span>액세서리</span></a></li>
-                <li><a href="#"><span>슈즈</span></a></li>
-                <li><a href="#"><span>가방</span></a></li>
+            <ul class="dropdown productList">
+                <li><a href="/ProductList?category=&title=베스트아이템"><span>베스트아이템</span></a></li>
+                <li><a href="/ProductList?category=&title=신상품"><span>신상품</span></a></li>
+                <li><a href="/ProductList?category=드레스"><span>드레스</span></a></li>
+                <li><a href="/ProductList?category=블라우스"><span>블라우스</span></a></li>
+                <li><a href="/ProductList?category=아우터"><span>아우터</span></a></li>
+                <li><a href="/ProductList?category=티셔츠"><span>티셔츠</span></a></li>
+                <li><a href="/ProductList?category=니트"><span>니트</span></a></li>
+                <li><a href="/ProductList?category=스커트"><span>스커트</span></a></li>
+                <li><a href="/ProductList?category=팬츠"><span>팬츠</span></a></li>
+                <li><a href="/ProductList?category=주얼리"><span>주얼리</span></a></li>
+                <li><a href="/ProductList?category=액세서리"><span>액세서리</span></a></li>
+                <li><a href="/ProductList?category=슈즈"><span>슈즈</span></a></li>
+                <li><a href="/ProductList?category=가방"><span>가방</span></a></li>
             </ul>
         </nav>
     

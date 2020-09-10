@@ -14,8 +14,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <!-- bootstrapcss -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
-    <!-- slideshow css -->
-    <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
     <link rel="stylesheet" href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
@@ -28,32 +26,41 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
     <!--font aswsome cdn  -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
-    <!-- slider js -->
-    <script src="../js/slideshow.js"></script>
     <!-- top fixed Menu js -->
     <script src="../js/topFixedMenu.js"></script>
     <!-- noticeList를 동적으로 받아오는 js파일 -->
     <script src="../js/footNoticeList.js"></script>
-    <!-- item을 동적으로 받아오는 js! -->
-    <script src="../js/index.js"></script>
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>
 <%@ include file="include/slider.jsp" %> --%>
 <jsp:include page="include/header.jsp"/>
-<jsp:include page="include/slider.jsp"/>
 <!-- 메인부분 -->
 <main>
     <header>
-        <div class="mainHeader">    
-            <h1>Best Item</h1>
+        <div class="mainHeader">
+        <c:set var="pageTitle" value=""></c:set>
+            <h1>${param.category == ""?param.title:param.category}</h1>
         </div>
     </header>
     <!-- 아이템 리스트부분 -->
     <section>
         <div>
             <ul class="productsUl">
-                <!-- 리스트는 db에서 받아오는중 -->
+            <!--index페이지에서 그리는 card형식 그대로 가져옴  -->
+            <c:forEach var="pList" items="${productList}"> 
+                <li class="productsList">
+	                <div class="img">
+	                    <a href="/ProductView?productId=${pList.productId}"><img class='imgsize' src="../product/${pList.productImg}" alt="임시이미지"></a>
+	                </div>
+	                <div class="info">
+	                    <h2>${pList.productName}</h2>
+	                    <p>${pList.shortDetail}</p>
+	                    <p>기존가격:${pList.productPrice}</p>
+	                    <p>할인(${pList.productSalePer}%)할인가:${pList.productSalePrice}</p>
+	                </div>
+          	  </li>
+            </c:forEach>
             </ul>         
         </div>
     </section>

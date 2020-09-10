@@ -20,7 +20,7 @@ $(function(){
 function createHtml(product){
     return `<li class="productsList">
                 <div class="img">
-                    <a href="#"><img class='imgsize' src="../product/${product.productImg}" alt="임시이미지"></a>
+                    <a href="/ProductView?productId=${product.productId}"><img class='imgsize' src="../product/${product.productImg}" alt="임시이미지"></a>
                 </div>
                 <div class="info">
                     <h2>${product.productName}</h2>

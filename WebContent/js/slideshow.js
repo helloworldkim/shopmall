@@ -1,10 +1,11 @@
 $(function(){
     var container = $('.slideshow');
     var slideGroup = container.find('.slideshow_slides');
-    var slides = slideGroup.find('a');
+    //var slides = slideGroup.find('a');
+    var slides = slideGroup.find('.slidebox');
     var nav = container.find('.slideshow_nav');
     var indicator = container.find('.indicator');
-    var slideCount = slides.length; //이미지 a의 갯수
+    var slideCount = slides.length; //슬라이더의 갯수
     var indicatorHTML = "";
     var currentIndex = 0%slideCount;
     var duration = 500;

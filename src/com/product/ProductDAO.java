@@ -86,6 +86,7 @@ public class ProductDAO {
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					ProductDTO pDTO =new ProductDTO();
+					pDTO.setProductId(rs.getInt("productid"));
 					pDTO.setProductName(rs.getString("productname"));
 					pDTO.setShortDetail(rs.getString("shortdetail"));
 					pDTO.setProductDetail(rs.getString("productdetail"));
@@ -93,7 +94,9 @@ public class ProductDAO {
 					pDTO.setProductSalePer(rs.getInt("productsaleper"));
 					pDTO.setProductSalePrice(rs.getInt("productsaleprice"));
 					pDTO.setProductCategory(rs.getString("productcategory"));
+					pDTO.setProductDate(rs.getString("productdate"));
 					pDTO.setProductImg(rs.getString("productImg"));
+					pDTO.setProductHit(rs.getInt("producthit"));
 					list.add(pDTO);
 				}
 				
@@ -116,6 +119,7 @@ public class ProductDAO {
 				rs = pstmt.executeQuery();
 				while(rs.next()) {
 					ProductDTO pDTO =new ProductDTO();
+					pDTO.setProductId(rs.getInt("productid"));
 					pDTO.setProductName(rs.getString("productname"));
 					pDTO.setShortDetail(rs.getString("shortdetail"));
 					pDTO.setProductDetail(rs.getString("productdetail"));
@@ -123,6 +127,7 @@ public class ProductDAO {
 					pDTO.setProductSalePer(rs.getInt("productsaleper"));
 					pDTO.setProductSalePrice(rs.getInt("productsaleprice"));
 					pDTO.setProductCategory(rs.getString("productcategory"));
+					pDTO.setProductDate(rs.getString("productdate"));
 					pDTO.setProductImg(rs.getString("productImg"));
 					pDTO.setProductHit(rs.getInt("producthit"));
 					list.add(pDTO);
@@ -135,6 +140,38 @@ public class ProductDAO {
 			}
 			
 			return list;
+		}
+		//상품 상세보기 페이지를위한 id로 조회하는부분
+		public ProductDTO getProductById(int productId) {
+			String sql= "select * from product where productid=?";
+			try {
+				conn= getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, productId);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					ProductDTO p = new ProductDTO();
+					p.setProductId(rs.getInt("productid"));
+					p.setProductName(rs.getString("productname"));
+					p.setShortDetail(rs.getString("shortdetail"));
+					p.setProductDetail(rs.getString("productdetail"));
+					p.setProductPrice(rs.getInt("productprice"));
+					p.setProductSalePer(rs.getInt("productsaleper"));
+					p.setProductSalePrice(rs.getInt("productsaleprice"));
+					p.setProductCategory(rs.getString("productcategory"));
+					p.setProductDate(rs.getString("productdate"));
+					p.setProductImg(rs.getString("productImg"));
+					p.setProductHit(rs.getInt("producthit"));
+					return p;
+				}
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeConnection(conn, pstmt, null, rs);
+			}
+			return null;
+			
 		}
 
 
