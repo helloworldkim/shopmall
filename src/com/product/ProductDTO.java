@@ -11,6 +11,7 @@ public class ProductDTO {
 		private String productCategory; 	//종류별 구분될 상품종류
 		private String productImg;			//이미지
 		private String productDate; 		//등록시간
+		private int productHit;				//상품조회수
 		
 		
 		public int getProductId() {
@@ -73,6 +74,14 @@ public class ProductDTO {
 		public void setProductCategory(String productCategory) {
 			this.productCategory = productCategory;
 		}
+		public int getProductHit() {
+			return productHit;
+		}
+		public void setProductHit(int productHit) {
+			this.productHit = productHit;
+		}
+		
+		
 		
 		
 		

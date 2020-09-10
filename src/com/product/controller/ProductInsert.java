@@ -1,31 +1,28 @@
 package com.product.controller;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintWriter;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 import com.product.ProductDAO;
 import com.product.ProductDTO;
 
 
-//multipart 어노테이션
-@MultipartConfig(
-		//location="/product", 일반적인 경로는 설정을 안하는경우가 많음
-		fileSizeThreshold = 1024*1024, //1메가
-		maxFileSize = 1024*1024*50, //50메가
-		maxRequestSize = 1024*1024*50*5 //250메가
-		)
-
+////multipart 어노테이션
+//@MultipartConfig(
+//		//location="/product", 일반적인 경로는 설정을 안하는경우가 많음
+//		fileSizeThreshold = 1024*1024, //1메가
+//		maxFileSize = 1024*1024*50, //50메가
+//		maxRequestSize = 1024*1024*50*5 //250메가
+//		)
 @WebServlet("/ProductInsert")
 public class ProductInsert extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -38,43 +35,33 @@ public class ProductInsert extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//이미지 파일을 제외한 나머지부분
-		String productName=request.getParameter("productName");
-		String shortDetail=request.getParameter("shortDetail");
-		int productPrice=Integer.parseInt(request.getParameter("productPrice"));
-		String productCategory=request.getParameter("productCategory");
-		int productSalePer=Integer.parseInt(request.getParameter("productSalePer"));
-		int productSalePrice=Integer.parseInt(request.getParameter("productSalePrice"));
-		String productDetail=request.getParameter("productDetail");
-
-		Part filePart = request.getPart("productImg");
-		//전송된 파일의 실제이름을 가져옴
-		String fileName = filePart.getSubmittedFileName();
-		InputStream fis = filePart.getInputStream();
+		String savePath = "product";  //파일저장경로지정
+		int uploadFileSizeLimit = 50*1024*1024;  //지정크기 50mb이하
+		String encType = "UTF-8";  //인코딩 타입 미지정시 upload안됨!
+		ServletContext context = getServletContext(); //application객체
+		String uploadFilePath = context.getRealPath(savePath); //실제경로 구하기
+		System.out.println("실제경로:"+uploadFilePath);
 		
-		//product에 저장할예정
-		String realPath = request.getServletContext().getRealPath("/product");
-		System.out.println(realPath);
+		MultipartRequest  multi = new MultipartRequest(
+				request, 
+				uploadFilePath, 
+				uploadFileSizeLimit ,
+				encType,
+				//rename부분
+				new  DefaultFileRenamePolicy()
+		);
+		//system에 저장되는 실제이름
+		String fileName = multi.getFilesystemName("productImg");
+		System.out.println("파일이름 : "+fileName);
 		
-		//해당방법은 window에서만 가능해서 밑에방법으로 사용해야한다!
-		//String filePath = realPath +"\\" +fileName;
-		String filePath = realPath + File.separator +fileName;
-		FileOutputStream fos =  new FileOutputStream(filePath);
-		/* 해당방식은 시간을 엄청나게 소모함 
-		int b;
-		//read가 마지막인경우 -1을 리턴함 (기존은 바이너리데이터)
-		while((b=fis.read()) != -1) {
-			fos.write(b);
-		}*/
-		
-		byte[] buf =new byte[1024];
-		int size=0;
-		//read가 마지막인경우 -1을 리턴함 (기존은 바이너리데이터)
-		while((size=fis.read(buf)) != -1) {
-			fos.write(buf,0,size);
-		}
-		fos.close();
-		fis.close();
+		//모든 request부분은 multipart에서 받아오기로 함!
+		String productName=multi.getParameter("productName");
+		String shortDetail=multi.getParameter("shortDetail");
+		int productPrice=Integer.parseInt(multi.getParameter("productPrice"));
+		String productCategory=multi.getParameter("productCategory");
+		int productSalePer=Integer.parseInt(multi.getParameter("productSalePer"));
+		int productSalePrice=Integer.parseInt(multi.getParameter("productSalePrice"));
+		String productDetail=multi.getParameter("productDetail");
 		
 		
 		ProductDTO product =new ProductDTO();
@@ -92,7 +79,7 @@ public class ProductInsert extends HttpServlet {
 		if(result==1) {
 			PrintWriter script = response.getWriter();
 			script.println("<script>");
-			script.println("alert('가입성공')");
+			script.println("alert('등록성공')");
 			script.println("location.href='./view/index.jsp'");
 			script.println("</script>");
 		}else {

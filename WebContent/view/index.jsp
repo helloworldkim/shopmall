@@ -34,6 +34,8 @@
     <script src="../js/topFixedMenu.js"></script>
     <!-- noticeList를 동적으로 받아오는 js파일 -->
     <script src="../js/footNoticeList.js"></script>
+    <!-- item을 동적으로 받아오는 js! -->
+    <script src="../js/index.js"></script>
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>
@@ -51,7 +53,7 @@
     <section>
         <div>
             <ul class="productsUl">
-                <li class="productsList">
+                <!-- <li class="productsList">
                     <div class="img">
                         <a href="#"><img src="../img/slider1.jfif" alt="임시이미지"></a>
                     </div>
@@ -90,7 +92,7 @@
                         <p>설명</p>
                         <p>가격</p>
                     </div>
-                </li>
+                </li> -->
             </ul>         
         </div>
     </section>
