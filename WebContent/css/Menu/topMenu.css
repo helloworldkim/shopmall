@@ -190,3 +190,8 @@ a{
 .dropdown-container{
 	cursor: pointer;
 }
+/* btnSearch 포인터변경 클릭가능한것처럼 보이게 */
+
+#btnSearch{
+    cursor: pointer;
+}

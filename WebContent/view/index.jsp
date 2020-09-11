@@ -36,6 +36,10 @@
     <script src="../js/footNoticeList.js"></script>
     <!-- item을 동적으로 받아오는 js! -->
     <script src="../js/index.js"></script>
+    <!--레이어팝업 css -->
+    <link rel="stylesheet" href="../css/Menu/mainLayerPopup.css">
+    <!--레이어팝업 js  -->
+    <script src="../js/mainLayerPopup.js"></script>
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>
@@ -58,6 +62,18 @@
         </div>
     </section>
 </main>
+<!--레이어 팝업부분  -->
+<div class="layerContainer">
+    <div class="popupBox">
+        <div>
+            <a><img src="https://atimg.sonyunara.com/files/attrangs/popup/1599715439_0.jpg" alt="레이어이미지"></a>
+        </div>
+        <div class="closeBtnContainer">
+            <div id="todayCloseBtn">오늘하루 그만보기</div>
+            <div id="closeBtn">닫기</div>
+        </div>
+    </div>    
+</div>
 <%-- <%@ include file="include/footer.jsp" %>   --%>
 <jsp:include page="include/footer.jsp"/>
    

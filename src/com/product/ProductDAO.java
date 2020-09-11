@@ -141,6 +141,39 @@ public class ProductDAO {
 			
 			return list;
 		}
+		//신상품은 등록 날짜를 기준으로해서 검색한 리스트!
+				public ArrayList<ProductDTO> getProductListByDate(String category) {
+					ArrayList<ProductDTO> list = new ArrayList<ProductDTO>();
+					String sql = "select * from (select * from product order by productdate desc) where productcategory like ?";
+					try {
+						conn= getConnection();
+						pstmt = conn.prepareStatement(sql);
+						pstmt.setString(1, "%"+category+"%");
+						rs = pstmt.executeQuery();
+						while(rs.next()) {
+							ProductDTO pDTO =new ProductDTO();
+							pDTO.setProductId(rs.getInt("productid"));
+							pDTO.setProductName(rs.getString("productname"));
+							pDTO.setShortDetail(rs.getString("shortdetail"));
+							pDTO.setProductDetail(rs.getString("productdetail"));
+							pDTO.setProductPrice(rs.getInt("productprice"));
+							pDTO.setProductSalePer(rs.getInt("productsaleper"));
+							pDTO.setProductSalePrice(rs.getInt("productsaleprice"));
+							pDTO.setProductCategory(rs.getString("productcategory"));
+							pDTO.setProductDate(rs.getString("productdate"));
+							pDTO.setProductImg(rs.getString("productImg"));
+							pDTO.setProductHit(rs.getInt("producthit"));
+							list.add(pDTO);
+						}
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}finally {
+						closeConnection(conn, pstmt, null, rs);
+					}
+					
+					return list;
+				}
 		//상품 상세보기 페이지를위한 id로 조회하는부분
 		public ProductDTO getProductById(int productId) {
 			String sql= "select * from product where productid=?";
@@ -189,7 +222,7 @@ public class ProductDAO {
 			}
 
 		}
-
+		
 
 		
 		

@@ -6,7 +6,7 @@
         <div class="topContainer">
             <!-- 검색부분 -->
             <div class="searchContainer">
-                <input type="text" id="SearchInput">
+                <input type="text" id="searchInput">
                 <i class="fas fa-search" id='btnSearch'></i>
             </div>
             <!-- 쇼핑몰 메인부분 -->
@@ -60,8 +60,13 @@
                 <li><a href="/ProductList?category=드레스"><span>드레스</span></a></li>
                 <li><a href="/ProductList?category=블라우스"><span>블라우스</span></a></li>
                 <li><a href="/ProductList?category=아우터"><span>아우터</span></a></li>
-                <li><a href="/ProductList?category=티셔츠"><span>티셔츠</span></a></li>
-                <li><a href="/ProductList?category=니트"><span>니트</span></a></li>
+                <div class="dropdown">
+                    <div class="dropdown-toggle dropdown-container" data-toggle="dropdown">니트/티셔츠</div>
+                        <div class="dropdown-menu">
+                            <a href="/ProductList?category=니트" class="dropdown-item"><span>니트</span></a>
+                            <a href="/ProductList?category=티셔츠" class="dropdown-item"><span>티셔츠</span></a>
+                        </div>
+                    </div>
                 <li><a href="/ProductList?category=스커트"><span>스커트</span></a></li>
                 <li><a href="/ProductList?category=팬츠"><span>팬츠</span></a></li>
                 <li><a href="/ProductList?category=주얼리"><span>주얼리</span></a></li>

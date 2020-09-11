@@ -26,8 +26,20 @@ public class ProductList extends HttpServlet {
 		if(request.getParameter("category")!=null) {
 			category=request.getParameter("category");
 		}
+		String title="";
+		if(request.getParameter("title")!=null) {
+			title=request.getParameter("title");
+		}
+		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
+		if(title.equals("신상품")) { //날짜를 기준으로 정렬한 리스트
+			productList = ProductDAO.getInstance().getProductListByDate(category);
+		}else if(title.equals("베스트아이템")){ //조회수를 기준으로 정렬한 리스트
+			productList = ProductDAO.getInstance().getProductListByHit(category);
+		}else { //그냥 카테고리별 리스트
+			productList = ProductDAO.getInstance().getProductList(category);
+		}
 
-		ArrayList<ProductDTO> productList = ProductDAO.getInstance().getProductList(category);
+		
 		
 		request.setAttribute("productList", productList);
 
