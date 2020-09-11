@@ -20,11 +20,11 @@
             <nav class="topNavContainer" role='navigation_member'>
 			<c:if test="${empty sessionScope.userId}">
             	<a href="../view/login.jsp">로그인</a>
+            	<a href="../view/join_step1.jsp">회원가입</a>
             </c:if>
 			<c:if test="${not empty sessionScope.userId}">
             	<a href="/UserLogout">로그아웃</a>
 			</c:if>
-                <a href="../view/join_step1.jsp">회원가입</a>
                 <div class="dropdown">
                 <div class="dropdown-toggle dropdown-container" data-toggle="dropdown">마이페이지</div>
                     <div class="dropdown-menu">

@@ -174,6 +174,22 @@ public class ProductDAO {
 			
 		}
 
+		//조회수 증가
+		public void increaseHit(int productId) {
+			String sql="update product set producthit = producthit+1 where productId=?";
+			try {
+				conn=getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, productId);
+				pstmt.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				closeConnection(conn, pstmt, null, null);
+			}
+
+		}
+
 
 		
 		

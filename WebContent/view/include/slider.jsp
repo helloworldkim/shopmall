@@ -11,7 +11,7 @@
             </div>
             <div class="slidebox">
                 <a href=""><img id="slide3" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599218900_0.jpg" alt="slide3"></a>
-                <a href=""><img id="slide4" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599219369_0.jpg" alt="slide4"></a>
+                <a href=""><img id="slide4" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599699047_0.jpg" alt="slide4"></a>
             </div>
             <div class="slidebox">
                 <a href=""><img id="slide3" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599525078_0.jpg" alt="slide5"></a>

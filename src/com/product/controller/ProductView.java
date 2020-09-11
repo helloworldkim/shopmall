@@ -26,30 +26,34 @@ public class ProductView extends HttpServlet {
 		if(request.getParameter("productId")!=null) {
 			productId = Integer.parseInt(request.getParameter("productId"));
 		}
-		
-		HttpSession session = request.getSession();
 		//내가본 상품 등록위한 session객체
+		HttpSession session = request.getSession();
+		//상품을 등록하는 리스트
 		ArrayList<Integer> productList;
+		//값을 비교할 리스트
 		ArrayList<Integer> resultList = new ArrayList<Integer>();
-		if (session.getAttribute("productList") == null) {
+		if (session.getAttribute("productIdList") == null) {
 			productList = new ArrayList<Integer>();
 			productList.add(productId);
-			session.setAttribute("productList", productList);
+			session.setAttribute("productIdList", productList);
 		}else {
-			productList =(ArrayList<Integer>) (session.getAttribute("productList"));
+			productList =(ArrayList<Integer>) (session.getAttribute("productIdList"));
 			productList.add(productId);
 			for(Integer p: productList) {
 				if(!resultList.contains(p)) {
 					resultList.add(p);
 				}
 			}
-			session.setAttribute("productList", resultList);
+			session.setAttribute("productIdList", resultList);
 			
 		}
-		System.out.println(resultList);
+		System.out.println(session.getAttribute("productIdList"));
 				
 		ProductDAO pDAO = ProductDAO.getInstance();
+		//해당아이디 게시물을 불러옴
 		ProductDTO product = pDAO.getProductById(productId);
+		//상품을 조회했으니 조회수(hit) 1증가시킴
+		pDAO.increaseHit(productId);
 		
 		request.setAttribute("product", product);
 		

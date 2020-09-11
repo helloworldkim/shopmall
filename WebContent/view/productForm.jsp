@@ -73,8 +73,12 @@
 					</tr>
 					<tr>
 						<th>상품 이미지</th>
-						<td><input type="file" class="form-control" name="productImg"></td>
+						<td><input type="file" class="form-control" multiple="multiple" name="productImg"></td>
 					</tr>
+					<!-- <tr>
+						<th>상품 이미지2</th>
+						<td><input type="file" class="form-control" multiple="multiple" name="productImg2"></td>
+					</tr> -->
 				</tbody>
 			</table>
 			<textarea class="form-control" style="text-align: left; border: 1px solid black; 
