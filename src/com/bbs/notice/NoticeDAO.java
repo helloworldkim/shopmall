@@ -1,12 +1,16 @@
 package com.bbs.notice;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class NoticeDAO {
 	Connection conn;
@@ -22,25 +26,15 @@ public class NoticeDAO {
 	public static NoticeDAO getInstance() {
 		return instance;
 	}
-	//커넥션
-	public Connection getConnection() {
-		 String userid = "shopmall";
-		 String userpassword = "shopmall";
-		 String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		 try {
-	 Class.forName("oracle.jdbc.driver.OracleDriver"); 
-	 } catch(ClassNotFoundException e){
-		 e.printStackTrace();
-	}
-	 
-	 try { 
-		 conn= DriverManager.getConnection(url,userid,userpassword);
-		 } catch(SQLException e) {
-			 e.printStackTrace(); 
-		} 
-	 return conn;
-	}
 	
+	//Tomcat DBCP/ JNDI기법
+		private Connection getConnection() throws SQLException, NamingException {
+				Context initCtx = new InitialContext();
+				Context envCtx = (Context)initCtx.lookup("java:comp/env");//기본경로
+				DataSource ds = (DataSource) envCtx.lookup("jdbc/jsp/shopmall"); //등록하는이름(사용자지정)
+				return ds.getConnection();
+	}
+		
 	//close 메서드
 	private void closeConnection(Connection conn, PreparedStatement pstmt , Statement stmt, ResultSet rs) {
 		try {
@@ -58,13 +52,16 @@ public class NoticeDAO {
 									//bbsid title content date adminid hit available 순서
 		String sql = "insert into noticebbs values(notice_seq.nextval,?,?,sysdate,?,0,1)";
 		try {
-			conn=getConnection();
+			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, bbsTitle);
 			pstmt.setString(2, bbsContent);
 			pstmt.setString(3, bbsAdminId);
 			return pstmt.executeUpdate(); //성공적으로 insert되면 양수반환
 		} catch (SQLException e) {
+			e.printStackTrace();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			closeConnection(conn, pstmt, null, null);
@@ -94,6 +91,9 @@ public class NoticeDAO {
 						list.add(notice);
 					}
 				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}finally {
 					closeConnection(conn, pstmt, null, rs);
@@ -127,6 +127,9 @@ public class NoticeDAO {
 						list.add(notice);
 					}
 				} catch (SQLException e) {
+					e.printStackTrace();
+				} catch (NamingException e) {
+					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}finally {
 					closeConnection(conn, pstmt, null, rs);

@@ -1,12 +1,16 @@
 package com.product;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
 
 public class ProductDAO {
 	Connection conn;
@@ -19,25 +23,14 @@ public class ProductDAO {
 		return instance;
 	}
 	
-	//커넥션
-		public Connection getConnection() {
-			 String userid = "shopmall";
-			 String userpassword = "shopmall";
-			 String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			 try {
-		 Class.forName("oracle.jdbc.driver.OracleDriver"); 
-		 } catch(ClassNotFoundException e){
-			 e.printStackTrace();
+	//Tomcat DBCP/ JNDI기법
+		private Connection getConnection() throws SQLException, NamingException {
+				Context initCtx = new InitialContext();
+				Context envCtx = (Context)initCtx.lookup("java:comp/env");//기본경로
+				DataSource ds = (DataSource) envCtx.lookup("jdbc/jsp/shopmall"); //등록하는이름(사용자지정)
+				return ds.getConnection();
 		}
-		 
-		 try { 
-			 conn= DriverManager.getConnection(url,userid,userpassword);
-			 } catch(SQLException e) {
-				 e.printStackTrace(); 
-			} 
-		 return conn;
-		}
-		
+	
 		//close 메서드
 		private void closeConnection(Connection conn, PreparedStatement pstmt , Statement stmt, ResultSet rs) {
 			try {
