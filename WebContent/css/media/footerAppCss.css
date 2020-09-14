@@ -1,0 +1,22 @@
+.footerBox{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+.footerBox div{
+    margin-bottom: 20px;
+}
+.footerInfoDetail{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+}
+
+.footerInfoDetail>div{
+    margin-bottom: 10px;
+}
+
+/* footer사이에 선 그어주던 div부분 none */
+.drowingLine{
+    display: none;
+}

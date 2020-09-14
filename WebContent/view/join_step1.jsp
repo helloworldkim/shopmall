@@ -15,11 +15,11 @@
     <!-- bootstrapcss -->
     <link rel="stylesheet" href="../css/bootstrap/bootstrap.css">
     <!-- topMenu css -->
-    <link rel="stylesheet" href="../css/Menu/topMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)"  href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
     <link rel="stylesheet" href="../css/Menu/mainMenu.css">
     <!-- footerMenu css -->
-    <link rel="stylesheet" href="../css/Menu/footerMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)"  href="../css/Menu/footerMenu.css">
     <!--join css  -->
     <link rel="stylesheet" href="../css/join/join.css">
     <!-- jquery cdn  -->
@@ -32,6 +32,10 @@
     <script src="../js/join_step1.js"></script>
     <!-- noticeList를 동적으로 받아오는 js파일 -->
     <script src="../js/footNoticeList.js"></script>
+    <!-- 반응형 웹을위한 css파일 max-width 560px 헤더-->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/headerAppCss.css" />
+    <!-- 반응형 웹을위한 css파일 max-width 560px 풋터  -->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/footerAppCss.css" />
 </head>
 <body>
 <jsp:include page="include/header.jsp"/>

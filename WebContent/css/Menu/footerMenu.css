@@ -64,3 +64,11 @@
     transform: scale(1.1);
     background-color: burlywood;
 }
+.drowingLine{
+    border-right: 1px solid black;
+    width: 1px; 
+    height: 97px;
+    position: absolute; 
+    top: 25px;
+    left: 170px;
+}

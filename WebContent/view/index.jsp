@@ -17,11 +17,11 @@
     <!-- slideshow css -->
     <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
-    <link rel="stylesheet" href="../css/Menu/topMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)" href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
     <link rel="stylesheet" href="../css/Menu/mainMenu.css">
     <!-- footer css -->
-    <link rel="stylesheet" href="../css/Menu/footerMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)" href="../css/Menu/footerMenu.css">
     <!-- jquery cdn  -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- jquery ui cdn -->
@@ -40,6 +40,10 @@
     <link rel="stylesheet" href="../css/Menu/mainLayerPopup.css">
     <!--레이어팝업 js  -->
     <script src="../js/mainLayerPopup.js"></script>
+    <!-- 반응형 웹을위한 css파일 max-width 560px 헤더-->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/headerAppCss.css" />
+    <!-- 반응형 웹을위한 css파일 max-width 560px 풋터  -->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/footerAppCss.css" />
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>

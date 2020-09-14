@@ -11,7 +11,7 @@
             </div>
             <!-- 쇼핑몰 메인부분 -->
             <div>
-                <a href="../view/index.jsp">
+                <a href="../view/index.jsp" class="mainInfo">
                     <h1>ATTRANGS</h1>
                     <p>IT'S FLOWER MOMENT</p>
                 </a>

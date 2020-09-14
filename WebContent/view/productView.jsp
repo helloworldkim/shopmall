@@ -17,11 +17,11 @@
     <!-- slideshow css -->
     <link rel="stylesheet" href="../css/slideshow.css">
     <!-- topMenu css -->
-    <link rel="stylesheet" href="../css/Menu/topMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)" href="../css/Menu/topMenu.css">
     <!-- MainMenu css -->
     <link rel="stylesheet" href="../css/Menu/mainMenu.css">
     <!-- footer css -->
-    <link rel="stylesheet" href="../css/Menu/footerMenu.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)"  href="../css/Menu/footerMenu.css">
     <!-- jquery cdn  -->
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <!-- jquery ui cdn -->
@@ -30,10 +30,14 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css" integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
     <!-- top fixed Menu js -->
     <script src="../js/topFixedMenu.js"></script>
-    <!-- noticeList를 동적으로 받아오는 js파일 -->
-    <script src="../js/footNoticeList.js"></script>
     <!-- productView css파일 -->
-    <link rel="stylesheet" href="../css/product/productView.css">
+    <link rel="stylesheet" media="screen and (min-width: 561px)" href="../css/product/productView.css">
+    <!-- 반응형 웹을위한 css파일 max-width 560px 헤더-->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/headerAppCss.css" />
+    <!-- 반응형 웹을위한 css파일 max-width 560px 풋터  -->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/footerAppCss.css" />
+    <!-- 반응형 웹을위한 css파일 max-width 560px productView  -->
+    <link rel="stylesheet" media="screen and (max-width: 560px)" href="../css/media/productViewApp.css" />
 </head>
 <body>
 <%-- <%@ include file="include/header.jsp" %>

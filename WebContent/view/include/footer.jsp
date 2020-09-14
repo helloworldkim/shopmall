@@ -14,7 +14,7 @@
                             (토/일/공휴일은 휴무)
                         </p>
                     </div>
-                    <div style="border-right: 1px solid black; width: 1px; height: 97px; position: absolute; top: 25px; left: 170px;"></div>
+                    <div class="drowingLine"></div>
                     <div>
                         <h1>BANK INFO</h1>
                         <p>

@@ -1,0 +1,69 @@
+.productContainer{
+    display: flex;
+    min-width: 560px;
+    flex-direction: column;
+}
+
+.productContainer .imgBox,.productBuyInfo{
+    width: 100%;
+    height: 600px;
+    flex: 1;
+}
+
+.productContainer .imgBox>img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+.productBuyInfo{
+    margin: 10px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.productBuyInfo>div{
+    width: 100%;
+    flex: 1;
+}
+
+.productBuyInfo div table{
+    width: 100%;
+    height: 100%;
+
+}
+
+.productName{
+    font-size: 2rem;
+    font-weight: bold;
+}
+/* pricebox css */
+.salePersent{
+    font-size: 1.5rem;
+    color: #ff8e77;
+}
+.salePrice{
+    font-weight: bold;
+    font-size: 2rem;
+}
+.price{
+    text-decoration: line-through;
+}
+.buyingBox{
+    display: flex;
+    justify-content:center;
+    width: 100%;
+    height: 100%;
+}
+.productBuyBtn{
+    border-radius: 20px;
+    text-align: center;
+    line-height: 52.5px;
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;
+    background-color: black;
+    color: white;
+}
