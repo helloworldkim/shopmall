@@ -1,6 +1,7 @@
 package com.product.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -23,6 +24,15 @@ public class MyProductList extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		ProductDAO pDAO = ProductDAO.getInstance();
+		//조회한 상품이 없을때 접근할경우
+		if(session.getAttribute("productIdList")==null) {
+			PrintWriter script = response.getWriter();
+			script.println("<script>");
+			script.println("alert('아직까지 조회하신 상품이 없습니다')");
+			script.println("history.back(-1)");
+			script.println("</script>");
+			return;
+		}
 		//내가본 상품들의 productId값이 담겨있는 list
 		ArrayList<Integer> productIdList = (ArrayList<Integer>)session.getAttribute("productIdList");
 		//view페이지로 뿌려줄 list생성

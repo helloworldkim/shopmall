@@ -18,7 +18,8 @@ public class UserLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		//view페이지 주소를 안보여주면서 접근하도록 변경
+		request.getRequestDispatcher("./view/login.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

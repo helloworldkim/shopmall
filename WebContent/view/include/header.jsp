@@ -19,7 +19,7 @@
             <!-- 상단 nav bar -->
             <nav class="topNavContainer" role='navigation_member'>
 			<c:if test="${empty sessionScope.userId}">
-            	<a href="../view/login.jsp">로그인</a>
+            	<a href="/UserLogin">로그인</a>
             	<a href="../view/join_step1.jsp">회원가입</a>
             </c:if>
 			<c:if test="${not empty sessionScope.userId}">
