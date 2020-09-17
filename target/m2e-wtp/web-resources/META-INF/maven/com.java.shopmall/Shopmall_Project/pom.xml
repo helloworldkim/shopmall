@@ -4,11 +4,18 @@
   <artifactId>Shopmall_Project</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <dependencies>
-    <!-- mybatis 추가 -->
-  	<dependency>
-	  <groupId>org.mybatis</groupId>
-	  <artifactId>mybatis</artifactId>
-	  <version>3.1.1</version>
+    <!-- https://mvnrepository.com/artifact/org.mybatis/mybatis -->
+    <!--mybatis 3.1.1사용시 logImpl를 알지못한다는 오류발생하여 3.2이상 버전으로 사용해야함  -->
+	<dependency>
+	    <groupId>org.mybatis</groupId>
+	    <artifactId>mybatis</artifactId>
+	    <version>3.4.6</version>
+	</dependency>
+	<!--mybatis log추가-->
+	<dependency>
+	    <groupId>log4j</groupId>
+	    <artifactId>log4j</artifactId>
+	    <version>1.2.17</version>
 	</dependency>
 	<dependency>
     <!-- com.googlecode.json-simple -->

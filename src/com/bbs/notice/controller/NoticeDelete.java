@@ -10,7 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bbs.notice.NoticeDAO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class NoticeDelete
@@ -37,9 +40,11 @@ public class NoticeDelete extends HttpServlet {
 				script.println("history.back()");
 				script.println("</script>");
 		}
-		 NoticeDAO nDAO = NoticeDAO.getInstance();
-		 int result=nDAO.deleteNoticeById(bbsId);
-		
+		 SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		 SqlSession sqlsession = sqlSessionFactory.openSession();
+		 int result = sqlsession.delete("deleteNoticeById",bbsId);
+		 sqlsession.commit();
+		 sqlsession.close();
 		 PrintWriter out = response.getWriter();
 		 out.println(result);
 		 

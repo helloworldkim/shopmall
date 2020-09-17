@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.user.UserDAO;
-import com.user.UserDTO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.UserDTO;
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class userRegister
@@ -49,10 +52,11 @@ public class UserRegister extends HttpServlet {
 			user.setAdmin(admin);
 			user.setEmailAgreement(emailAgreement);
 			
-			
-			
-			UserDAO userDAO = UserDAO.getInstance();
-			int result = userDAO.insertUser(user); //result 0,1
+			SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+			SqlSession sqlSession = sqlSessionFactory.openSession();
+			int result = sqlSession.insert("insertUser",user); //0,1 쿼리실행결과
+			sqlSession.commit();
+			sqlSession.close();
 			if(result==1) {
 				PrintWriter script = response.getWriter();
 				script.println("<script>");

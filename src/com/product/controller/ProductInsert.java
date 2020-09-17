@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.ProductDTO;
+import com.mybatis.config.MybatisManager;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
-import com.product.ProductDAO;
-import com.product.ProductDTO;
 
 ////multipart 어노테이션
 //@MultipartConfig(
@@ -33,7 +36,7 @@ public class ProductInsert extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		
 		String savePath = "product"; // 파일저장경로지정
 		int uploadFileSizeLimit = 50 * 1024 * 1024; // 지정크기 50mb이하
 		String encType = "UTF-8"; // 인코딩 타입 미지정시 upload안됨!
@@ -91,10 +94,12 @@ public class ProductInsert extends HttpServlet {
 		product.setProductImg(nameList.toString().replace("[", "").replace("]", ""));
 		System.out.println("리스트:"+product.getProductImg());
 		*/
+		 SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		 SqlSession sqlsession = sqlSessionFactory.openSession();
 
-		 
-		 ProductDAO productDAO = ProductDAO.getInstance(); 
-		 int result = productDAO.InsertProduct(product); 
+		 int result = sqlsession.insert("InsertProduct",product); 
+		 sqlsession.commit();
+		 sqlsession.close();
 		 if(result==1) { 
 		 PrintWriter script = response.getWriter();
 		 script.println("<script>");

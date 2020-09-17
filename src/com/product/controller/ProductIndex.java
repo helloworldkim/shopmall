@@ -2,7 +2,7 @@ package com.product.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,11 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import com.product.ProductDAO;
-import com.product.ProductDTO;
+import com.mybatis.config.MybatisManager;
+import com.dto.ProductDTO;
 
 
 @WebServlet("/ProductIndex")
@@ -28,8 +30,10 @@ public class ProductIndex extends HttpServlet {
 		if(request.getParameter("category")!=null) {
 			category=request.getParameter("category");
 		}
-		ProductDAO pDAO=ProductDAO.getInstance();
-		ArrayList<ProductDTO> pList =  pDAO.getProductListByHit(category);
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlsession = sqlSessionFactory.openSession();
+		List<ProductDTO> pList = sqlsession.selectList("getProductListByHit",category);
+		sqlsession.close();
 		
 		JSONArray jarr = new JSONArray();
 		for(ProductDTO p : pList) {

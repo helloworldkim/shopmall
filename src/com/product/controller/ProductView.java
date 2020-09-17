@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.product.ProductDAO;
-import com.product.ProductDTO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.ProductDTO;
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class ProductView
@@ -48,12 +51,15 @@ public class ProductView extends HttpServlet {
 			
 		}
 		System.out.println(session.getAttribute("productIdList"));
-				
-		ProductDAO pDAO = ProductDAO.getInstance();
+		
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlsession = sqlSessionFactory.openSession();
 		//해당아이디 게시물을 불러옴
-		ProductDTO product = pDAO.getProductById(productId);
+		ProductDTO product = sqlsession.selectOne("getProductById",productId);
 		//상품을 조회했으니 조회수(hit) 1증가시킴
-		pDAO.increaseHit(productId);
+		sqlsession.selectOne("productIncreaseHit",productId);
+		sqlsession.commit();
+		sqlsession.close();
 		
 		request.setAttribute("product", product);
 		

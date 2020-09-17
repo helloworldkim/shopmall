@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.productMapper">
+<!-- 내가본 상품 조회용 id로 product찾기-->
+<select id="getProductById" resultType="productDTO">
+	select * from product where productid=#{productId}
+</select>
+<!--bestitem 정렬 기본category는 공백으로해서 모든제품중 hit가 가장 많은순서대로! -->
+<select id="getProductListByHit" resultType="productDTO">
+	select * from (select * from product order by producthit desc) where productcategory like '%'||#{category}||'%'
+</select>
+<!--  신상품은 등록 날짜를 기준으로해서 검색한 리스트!-->
+<select id="getProductListByDate" resultType="productDTO">
+	select * from (select * from product order by productdate desc) where productcategory like '%'||#{category}||'%'
+</select>
+<select id="getProductList" resultType="productDTO">
+	select * from product where productcategory like '%'||#{category}||'%'
+</select>
+<!--product 조회수 1증가 update문-->
+<update id="productIncreaseHit">
+	update product set producthit = producthit+1 where productId=#{productId}
+</update>
+<!--product insert문  -->
+<insert id="InsertProduct" parameterType="ProductDTO">
+	insert into
+	product values(PRODUCT_SEQ.nextval,#{productName},#{shortDetail},#{productDetail},#{productPrice}
+	,#{productSalePer},#{productSalePrice},#{productCategory},#{productImg},sysdate,0)
+</insert>
+</mapper>

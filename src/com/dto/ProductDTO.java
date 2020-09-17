@@ -1,5 +1,8 @@
-package com.product;
+package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("ProductDTO")
 public class ProductDTO {
 		private int productId; 			//상품등록번호 1부터시작
 		private String productName;		//상품이름

@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.product.ProductDAO;
-import com.product.ProductDTO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.ProductDTO;
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class MyProductList
@@ -23,7 +26,8 @@ public class MyProductList extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		ProductDAO pDAO = ProductDAO.getInstance();
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlsession = sqlSessionFactory.openSession();
 		//조회한 상품이 없을때 접근할경우
 		if(session.getAttribute("productIdList")==null) {
 			PrintWriter script = response.getWriter();
@@ -37,11 +41,11 @@ public class MyProductList extends HttpServlet {
 		ArrayList<Integer> productIdList = (ArrayList<Integer>)session.getAttribute("productIdList");
 		//view페이지로 뿌려줄 list생성
 		ArrayList<ProductDTO> productList = new ArrayList<ProductDTO>();
-		for(Integer p: productIdList) {
-			ProductDTO product = pDAO.getProductById(p);
+		for(Integer productId: productIdList) {
+			ProductDTO product = sqlsession.selectOne("getProductById",productId);
 			productList.add(product);
 		}
-		
+		sqlsession.close();
 		request.setAttribute("myProductList", productList);
 		
 		request.getRequestDispatcher("./view/myProductList.jsp").forward(request, response);

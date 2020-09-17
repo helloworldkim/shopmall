@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<!-- DB접속정보 값을 가지고 있는 파일 설정 -->
+	<properties resource="com/mybatis/config/db.properties"/>
+	<!--log세팅 사용시 mybatis 3.2이상 버전 사용필수-->
+	<settings>
+		<setting name="logImpl" value="LOG4J"/>
+	</settings>
+	<!--dto별칭설정  -->
+	<!-- <typeAliases>
+		<typeAlias type="com.bbs.notice.NoticeDTO" alias="NoticeDTO"/>
+		<typeAlias type="com.user.UserDTO" alias="UserDTO"/>
+		<typeAlias type="com.product.ProductDTO" alias="ProductDTO"/>
+	</typeAliases> -->
+	<typeAliases>
+		<!-- dto 내부에서 @Alias("이름") 으로 설정이 들어감-->
+		 <package name="com.dto"/> 
+	</typeAliases>
+	<!-- DB접속 정보 셋팅 -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<!--정의문서는 mappers 한곳에 지정해둬야함 -->
+	<!-- sql정의문서  -->
+	<mappers>
+		<mapper resource="com/mybatis/mapper/userMapper.xml" />
+	    <mapper resource="com/mybatis/mapper/noticeMapper.xml" />
+	    <mapper resource="com/mybatis/mapper/productMapper.xml" />
+	</mappers>
+
+
+</configuration>

@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.user.UserDAO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.UserDTO;
+import com.mybatis.config.MybatisManager;
 
 
 @WebServlet("/UserLogin")
@@ -41,18 +45,25 @@ public class UserLogin extends HttpServlet {
 			if(request.getParameter("userPwd")!=null) {
 				userPwd = request.getParameter("userPwd");
 			}
-			UserDAO userDAO = UserDAO.getInstance();
-			int result=userDAO.findUserById(userId, userPwd);
-			int admin=userDAO.getAdmin(userId);
+			UserDTO user = new UserDTO();
+			user.setUserId(userId);
+			user.setUserPwd(userPwd);
+			
+			
+			SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+			SqlSession sqlsession = sqlSessionFactory.openSession();
+			int result = sqlsession.selectOne("findUserById", user);
+			//0,1 아이디 비밀번호가 모두 맞을경우에만 로그인해줌
+			int admin=sqlsession.selectOne("getAdmin",userId); 
+			sqlsession.close();
 			
 			//아이디가 조회안되는경우
 			if(result==0) {
 				script.println("<script>");
-				script.println("alert('없는아이디 입니다')");
+				script.println("alert('아이디 또는 비번호를 확인해주세요')");
 				script.println("history.back()");
 				script.println("</script>");
 			}else {
-				if(result==1) {
 					//session객체에 userId와 admin를 저장함 admin값으로 구별 후 관리자의 경우 관리자페이지로 가는 링크를 넣음
 					session.setAttribute("userId", userId);
 					session.setAttribute("admin", admin);
@@ -60,12 +71,6 @@ public class UserLogin extends HttpServlet {
 					script.println("alert('로그인성공')");
 					script.println("location.href='./view/index.jsp'");
 					script.println("</script>");
-				}else if(result==2){
-					script.println("<script>");
-					script.println("alert('비밀번호가 다릅니다')");
-					script.println("history.back()");
-					script.println("</script>");
-				}
 			}
 			
 		}

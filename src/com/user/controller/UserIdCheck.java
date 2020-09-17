@@ -9,7 +9,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.user.UserDAO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class UserIDCheck
@@ -26,9 +29,10 @@ public class UserIdCheck extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String userId =  request.getParameter("userId");
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlsession = sqlSessionFactory.openSession();
 		
-		UserDAO dao = UserDAO.getInstance();
-		int result = dao.idCheck(userId);
+		int result = sqlsession.selectOne("idCheck",userId);
 		PrintWriter out = response.getWriter();
 		out.println(result);//결과값 return
 	}

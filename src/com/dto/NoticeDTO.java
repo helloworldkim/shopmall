@@ -1,5 +1,8 @@
-package com.bbs.notice;
+package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("NoticeDTO")
 public class NoticeDTO {
 	private int bbsId;			 //글번호
 	private String bbsTitle; 	//제목

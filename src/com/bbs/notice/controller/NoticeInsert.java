@@ -10,7 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bbs.notice.NoticeDAO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.NoticeDTO;
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class NoticeInsert
@@ -32,9 +36,18 @@ public class NoticeInsert extends HttpServlet {
 		String bbsAdminId = (String) session.getAttribute("userId");
 		String bbsTitle = request.getParameter("bbsTitle");
 		String bbsContent = request.getParameter("bbsContent");
-		NoticeDAO noticeDAO = NoticeDAO.getInstance();
+		NoticeDTO notice = new NoticeDTO();
+		notice.setBbsAdminId(bbsAdminId);
+		notice.setBbsTitle(bbsTitle);
+		notice.setBbsContent(bbsContent);
 		//insert메서드 수행
-		noticeDAO.insertNotice(bbsTitle, bbsContent, bbsAdminId);
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlsession = sqlSessionFactory.openSession();
+		sqlsession.insert("insertNotice",notice);
+		sqlsession.commit();
+		sqlsession.close();
+		
+
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('공지사항 작성완료')");

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mybatis.mapper.userMapper">
+
+<!--유저등록-->
+<insert id="insertUser" parameterType="UserDTO">
+	insert into shopuser	
+	values(#{userName},#{userId},#{userPwd},#{userPhone},#{userBirth},#{userEmail},#{admin},#{emailAgreement},'Y','Y',#{userZipcode},#{userAddress})
+</insert>
+<!--로그인부분 아이디 비밀번호 체크 2개 모두 맞을경우 login 해줌!-->
+<select id="findUserById" parameterType="UserDTO" resultType="int">
+	select count(*) from shopuser where userId=#{userId} and userPwd=#{userPwd}
+</select>
+<!-- 해당유저 admin아이디 찾기  -->
+<select id="getAdmin" resultType="int">
+	select admin from shopuser where userid=#{userId}
+</select>
+<!-- 아이디 중복체크 -->
+<select id="idCheck" resultType="int">
+	select count(userid) from shopuser where userid=#{userId}
+</select>
+</mapper>

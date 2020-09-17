@@ -1,5 +1,8 @@
-package com.user;
+package com.dto;
 
+import org.apache.ibatis.type.Alias;
+
+@Alias("UserDTO")
 public class UserDTO {
 	private String userName; //이름
 	private String userId;	//아이디

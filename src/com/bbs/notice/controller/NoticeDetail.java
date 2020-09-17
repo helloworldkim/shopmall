@@ -10,8 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.bbs.notice.NoticeDAO;
-import com.bbs.notice.NoticeDTO;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+
+import com.dto.NoticeDTO;
+import com.mybatis.config.MybatisManager;
 
 /**
  * Servlet implementation class NoticeInsert
@@ -37,14 +40,21 @@ public class NoticeDetail extends HttpServlet {
 			script.println("</script>");
 		}
 		
-		NoticeDAO nDAO = NoticeDAO.getInstance();
 		//아이디로 해당 게시물 찾아옴
-		NoticeDTO notice = nDAO.getNoticeById(bbsId);
+		//NoticeDTO notice = nDAO.getNoticeById(bbsId);
+		SqlSessionFactory sqlSessionFactory = MybatisManager.getSqlSessionFactory();
+		SqlSession sqlSession = sqlSessionFactory.openSession();
+		NoticeDTO notice = sqlSession.selectOne("getNoticeById",bbsId);
+		
 		//게시글을 읽었으니 조회수(hit) 1증가시킴
-		nDAO.increaseHit(bbsId);
+		sqlSession.update("noiceIncreaseHit",bbsId);
+		sqlSession.commit();
 		//이전글 다음글 찾는 메서드
-		NoticeDTO nextBbs = nDAO.getNextBbs(bbsId);
-		NoticeDTO prevBbs = nDAO.getPrevBbs(bbsId);
+		NoticeDTO nextBbs = sqlSession.selectOne("getNextBbs",bbsId);
+		NoticeDTO prevBbs = sqlSession.selectOne("getPrevBbs",bbsId);
+		
+		sqlSession.close();
+		
 		
 		String bbsAdminId = notice.getBbsAdminId();
 		String bbsTitle = notice.getBbsTitle();
