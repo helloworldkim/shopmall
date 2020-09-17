@@ -77,7 +77,7 @@
                 <!-- textarea 내용 출력부분 -->
 				<tr>
 				<%-- <td colspan="2" style="min-height: 200px; text-align: left;"><%=request.getAttribute("bbsContent")%></td> --%>
-					<td colspan="2" style="min-height: 500px; border: 1px solid black; text-align: left;">${bbsContent}</td>
+					<td colspan="3" style="min-height: 500px; border: 1px solid black; text-align: left;">${bbsContent}</td>
                 </tr>
                 <tr>
                     <th>이전글</th>

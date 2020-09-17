@@ -64,11 +64,9 @@
                 <input type="text" class="formInput" id="userName" name="userName">
             </div>
             <div class="group">
-                <label for="userId">아이디</label>
-                <div class="input-group mb-3">
-                    <input type="text" class="formInput input-group-append" id='userId' name="userId" placeholder="영문,숫자 조합">
-                    <span id="idCheckBtn" class="checkBtn input-group-append">중복체크</span>
-                </div>
+                    <label for="userId">아이디</label>
+                    <input type="text" class="formInput" id='userId' name="userId" placeholder="영문,숫자 조합">
+                    <span id="idCheckBtn" class="checkBtn">중복체크</span>
             </div>
             <!-- 중복체크전까지는 none상태 -->
             <div id="checkbox"></div>
@@ -94,10 +92,8 @@
             </div>
             <div class="group">
                 <label for="userZipcode">우편번호</label>
-                <div class="input-group mb-3">
-                     <input type="email" class="formInput" id="userZipcode" name="userZipcode">
-                     <span id="zipcodeCheckBtn" class="checkBtn input-group-append">조회하기</span>
-                </div>
+                <input type="email" class="formInput" id="userZipcode" name="userZipcode">
+                <span id="zipcodeCheckBtn" class="checkBtn">조회하기</span>
             </div>
             <div class="group">
                 <label for="userAddress">주소</label>
