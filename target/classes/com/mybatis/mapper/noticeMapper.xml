@@ -13,9 +13,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 </select>
 <!--리스트-->
 <select id="getNoticeList" parameterType="int" resultType="NoticeDTO">
-	<![CDATA[
 		select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
-	]]>
+</select>
+<!--리스트-->
+<select id="getNoticeListdesc" parameterType="java.util.HashMap" resultType="NoticeDTO">
+	<!--sort값이 없을경우 기본리스트  -->
+	<if test='sort =="" and sort !=null'>
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+	</if>
+	<!--있을경우 다른리스트-->
+	<if test='sort !=""'>
+		<choose>
+		<when test="sort.equals('titleDesc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsTitle desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('titleAsc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsTitle asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('numDesc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsid desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('numAsc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsid asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('adminDesc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsadminid desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('adminAsc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsadminid asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('ndateDesc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('ndateAsc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('nhitDesc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbshit desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		<when test="sort.equals('nhitAsc')">
+			select * from (select rownum num, N.* from(select * from noticebbs order by bbshit asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
+		</when>
+		</choose>
+	</if>
 </select>
 <!-- 공지사항 상세보기 --> 
 <select id="getNoticeById" resultType="NoticeDTO">

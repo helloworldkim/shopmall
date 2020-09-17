@@ -48,20 +48,100 @@
 			<table class="table table-hover"
 				style="text-align: center; border: 1px solid #dddddd">
 				<thead>
+					<c:set value="${param.sort}" var="sort"/>
 					<tr>
-						<th style="background-color: #eeeeee; text-align: center;">번호</th>
-						<th style="background-color: #eeeeee; text-align: center;">제목</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성자</th>
-						<th style="background-color: #eeeeee; text-align: center;">작성일</th>
-						<th style="background-color: #eeeeee; text-align: center;">조회수</th>
+						<c:choose>
+						<c:when test="${sort.equals('numAsc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=numDesc">번호↑</a>
+							</th>
+						</c:when>
+						<c:when test="${sort.equals('numDesc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=numAsc">번호↓</a>
+							</th>
+						</c:when>
+						<c:otherwise>
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=numDesc">번호</a>
+							</th>
+						</c:otherwise>
+						</c:choose>
+						<c:choose>
+						<c:when test="${sort.equals('titleDesc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=titleAsc">제목↓</a>
+							</th>
+						</c:when>
+						<c:when test="${sort.equals('titleAsc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=titleDesc">제목↑</a>
+							</th>
+						</c:when>
+						<c:otherwise>
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=titleDesc">제목</a>
+							</th>
+						</c:otherwise>
+						</c:choose>
+						<c:choose>
+						<c:when test="${sort.equals('adminDesc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=adminAsc">작성자↓</a>
+							</th>
+						</c:when>
+						<c:when test="${sort.equals('adminAsc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=adminDesc">작성자↑</a>
+							</th>
+						</c:when>
+						<c:otherwise>
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=adminDesc">작성자</a>
+							</th>
+						</c:otherwise>
+						</c:choose>
+						<c:choose>
+						<c:when test="${sort.equals('ndateDesc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=ndateAsc">작성일↓</a>
+							</th>
+						</c:when>
+						<c:when test="${sort.equals('ndateAsc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=ndateDesc">작성일↑</a>
+							</th>
+						</c:when>
+						<c:otherwise>
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=ndateDesc">작성일</a>
+							</th>
+						</c:otherwise>
+						</c:choose>
+						<c:choose>
+						<c:when test="${sort.equals('nhitDesc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=nhitAsc">조회수↓</a>
+							</th>
+						</c:when>
+						<c:when test="${sort.equals('nhitAsc')}">
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=nhitDesc">조회수↑</a>
+							</th>
+						</c:when>
+						<c:otherwise>
+							<th style="background-color: #eeeeee; text-align: center;">
+								<a href="?sort=nhitDesc">조회수</a>
+							</th>
+						</c:otherwise>
+						</c:choose>
 					</tr>
 				</thead>
 				<tbody>
 				<c:forEach var="l" items="${noticeList}">
 					<tr>
 						<td>${l.bbsId}</td>
-						<td><a href="./NoticeDetail?bbsId=${l.bbsId}">${l.bbsTitle}</a>
-						</td>
+						<td><a href="./NoticeDetail?bbsId=${l.bbsId}">${l.bbsTitle}</a></td>
 						<%-- <td>${l.bbsDate}</td> --%>
 						<c:set var="date" value="${l.bbsDate}" scope="page"></c:set>
 						<td>${l.bbsAdminId}</td>
@@ -82,7 +162,7 @@
 			<ul class="pagination" id="paginationUl">
 				<c:if test="${pageNumber>startNumber}">
 					<li class="page-item">
-						<a href="?pageNumber=${pageNumber-1}" class="page-item">이전</a>
+						<a href="?pageNumber=${pageNumber-1}&sort=${sort}" class="page-item">이전</a>
 					</li>
 				</c:if>
 				<c:if test="${pageNumber-1<1}">
@@ -91,11 +171,11 @@
 					</li>
 				</c:if>
 				<c:forEach var="i" begin="0" end="4">
-					<li class="page-item noticeList"><a href="?pageNumber=${startNumber+i}">${startNumber+i}</a>
+					<li class="page-item noticeList"><a href="?pageNumber=${startNumber+i}&sort=${sort}">${startNumber+i}</a>
 				</c:forEach>
 				<c:if test="${pageNumber+1<=lastNumber}">
 					<li class="page-item">
-						<a href="?pageNumber=${pageNumber+1}" class="page-item">다음</a>
+						<a href="?pageNumber=${pageNumber+1}&sort=${sort}" class="page-item">다음</a>
 					</li>
 				</c:if>
 				<c:if test="${pageNumber+1>lastNumber}">

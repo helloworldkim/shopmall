@@ -9,7 +9,7 @@ $(function(){
                 var result = JSON.parse(noSpaceData);
                 var made = result.map(item => createHtml(item)).join("");
                 target.append(made);
-                console.log(result);
+                //console.log(result);
 		    },
 		    error:function(e){
 		        alert(e);

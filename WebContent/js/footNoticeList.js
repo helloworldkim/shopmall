@@ -12,6 +12,7 @@ $(function(){
                 var target = $('#noticeListContainer');
                 var parsed = JSON.parse(data);
                 //console.log(parsed);
+                console.log(data);
                 target.html(parsed.map(item => createLiTag(item)).join(''));
 		    },
 		    error:function(e){

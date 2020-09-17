@@ -2,6 +2,7 @@ package com.bbs.notice.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -33,6 +34,10 @@ public class NoticeBBS extends HttpServlet {
 		if(request.getParameter("pageNumber")!=null) {
 			pageNumber= Integer.parseInt(request.getParameter("pageNumber"));
 		}
+		String sort="";
+		if(request.getParameter("sort")!=null) {
+			sort = request.getParameter("sort");
+		}
 		int totalPage; //총 페이지 수
 		int lastNumber; //마지막페이지 넘버
 		//int totalNoitce = NoticeDAO.getInstance().getNoticeCount();
@@ -48,10 +53,14 @@ public class NoticeBBS extends HttpServlet {
 			lastNumber = totalPage;
 		}
 		
-		//ArrayList<NoticeDTO> noticeList = NoticeDAO.getInstance().getNoticeList(pageNumber);
 		//RowBounds row = new RowBounds(offset , limit);
 		sqlsession = sqlSessionFactory.openSession();
-		List<NoticeDTO> noticeList = sqlsession.selectList("getNoticeList",pageNumber);
+		HashMap hMap = new HashMap();
+		hMap.put("pageNumber", pageNumber);
+		hMap.put("sort", sort);
+		System.out.println("sort값:"+hMap.get("sort"));
+		//List<NoticeDTO> noticeList = sqlsession.selectList("getNoticeList",pageNumber);
+		List<NoticeDTO> noticeList = sqlsession.selectList("getNoticeListdesc",hMap);
 		sqlsession.close();
 		request.setAttribute("noticeList", noticeList);
 		request.setAttribute("lastNumber", lastNumber);
@@ -67,7 +76,7 @@ public class NoticeBBS extends HttpServlet {
 		SqlSession sqlsession = sqlSessionFactory.openSession();
 		List<NoticeDTO> noticeList = sqlsession.selectList("getAllNoticeList");
 		sqlsession.close();
-		//수정가능??
+
 		JSONArray jarr = new JSONArray();
 		for(NoticeDTO n : noticeList) {
 			JSONObject jobj = new JSONObject();
