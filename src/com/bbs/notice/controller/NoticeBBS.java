@@ -58,7 +58,6 @@ public class NoticeBBS extends HttpServlet {
 		HashMap hMap = new HashMap();
 		hMap.put("pageNumber", pageNumber);
 		hMap.put("sort", sort);
-		System.out.println("sort값:"+hMap.get("sort"));
 		//List<NoticeDTO> noticeList = sqlsession.selectList("getNoticeList",pageNumber);
 		List<NoticeDTO> noticeList = sqlsession.selectList("getNoticeListdesc",hMap);
 		sqlsession.close();

@@ -6,9 +6,10 @@
 	<!-- DB접속정보 값을 가지고 있는 파일 설정 -->
 	<properties resource="com/mybatis/config/db.properties"/>
 	<!--log세팅 사용시 mybatis 3.2이상 버전 사용필수-->
-	<settings>
+	<!--해당 세팅하고 spring에서 리소스 부분에 log설정파일 넣어두면됨-->
+	<!-- <settings>
 		<setting name="logImpl" value="LOG4J"/>
-	</settings>
+	</settings> -->
 	<!--dto별칭설정  -->
 	<!-- <typeAliases>
 		<typeAlias type="com.bbs.notice.NoticeDTO" alias="NoticeDTO"/>
@@ -28,6 +29,14 @@
 				<property name="url" value="${url}" />
 				<property name="username" value="${username}" />
 				<property name="password" value="${password}" />
+				<!--추가한 pool설정-->
+				<property name="poolMaximumActiveConnections" value="20"/>
+	            <property name="poolMaximumIdleConnections" value="20"/>
+	            <property name="poolMaximumCheckoutTime" value="20000"/>
+	            <property name="poolPingEnabled" value="true"/>
+	            <property name="poolPingQuery" value="select 1"/>
+	            <property name="poolPingConnectionsNotUsedFor" value="10000"/>
+	            <property name="poolTimeToWait" value="15000"/>
 			</dataSource>
 		</environment>
 	</environments>

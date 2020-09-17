@@ -24,34 +24,34 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<!--있을경우 다른리스트-->
 	<if test='sort !=""'>
 		<choose>
-		<when test="sort.equals('titleDesc')">
+		<when test='sort.equals("titleDesc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsTitle desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('titleAsc')">
+		<when test='sort.equals("titleAsc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsTitle asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('numDesc')">
+		<when test='sort.equals("numDesc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsid desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('numAsc')">
+		<when test='sort.equals("numAsc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsid asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('adminDesc')">
+		<when test='sort.equals("adminDesc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsadminid desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('adminAsc')">
+		<when test='sort.equals("adminAsc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsadminid asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('ndateDesc')">
+		<when test='sort.equals("ndateDesc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('ndateAsc')">
+		<when test='sort.equals("ndateAsc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbsdate asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('nhitDesc')">
+		<when test='sort.equals("nhitDesc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbshit desc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
-		<when test="sort.equals('nhitAsc')">
+		<when test='sort.equals("nhitAsc")'>
 			select * from (select rownum num, N.* from(select * from noticebbs order by bbshit asc) N) WHERE NUM BETWEEN ((#{pageNumber}-1)*10)+1 AND #{pageNumber}*10
 		</when>
 		</choose>
