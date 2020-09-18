@@ -6,7 +6,9 @@ $(function(){
 		    data:{},
 		    success:function(data){
                 var noSpaceData= data.trim();
-                var result = JSON.parse(noSpaceData);
+                var parsed = JSON.parse(noSpaceData);
+				var result = parsed.jarr;
+				console.log(result);
                 var made = result.map(item => createHtml(item)).join("");
                 target.append(made);
                 //console.log(result);

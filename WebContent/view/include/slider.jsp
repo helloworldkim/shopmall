@@ -6,16 +6,16 @@
         <!-- 슬라이더 이미지 부분 -->
         <div class="slideshow_slides">
             <div class="slidebox">
-                <a href=""><img id="slide1" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1598580298_0.jpg" alt="slide1"></a>
-                <a href=""><img id="slide2" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1592449894_0.jpg" alt="slide2"></a>
+                <a href=""><img id="slide1" src="../img/슬라이더1.jpg" alt="slide1"></a>
+                <a href=""><img id="slide2" src="../img/슬라이더2.jpg" alt="slide2"></a>
             </div>
             <div class="slidebox">
-                <a href=""><img id="slide3" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599218900_0.jpg" alt="slide3"></a>
-                <a href=""><img id="slide4" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599699047_0.jpg" alt="slide4"></a>
+                <a href=""><img id="slide3" src="../img/슬라이더3.jpg" alt="slide3"></a>
+                <a href=""><img id="slide4" src="../img/슬라이더4.gif" alt="slide4"></a>
             </div>
             <div class="slidebox">
-                <a href=""><img id="slide3" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1599525078_0.jpg" alt="slide5"></a>
-                <a href=""><img id="slide4" src="https://atimg.sonyunara.com/files/attrangs/new_banner/1598405738_0.jpg" alt="slide6"></a>
+                <a href=""><img id="slide3" src="../img/슬라이더5.jpg" alt="slide5"></a>
+                <a href=""><img id="slide4" src="../img/슬라이더6.jpg" alt="slide6"></a>
             </div>
         </div>
         <!-- prev,next 버튼부분 -->

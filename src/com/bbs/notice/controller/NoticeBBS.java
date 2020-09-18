@@ -14,10 +14,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import com.dto.NoticeDTO;
+import com.google.gson.Gson;
 import com.mybatis.config.MybatisManager;
 
 /**
@@ -75,17 +74,15 @@ public class NoticeBBS extends HttpServlet {
 		SqlSession sqlsession = sqlSessionFactory.openSession();
 		List<NoticeDTO> noticeList = sqlsession.selectList("getAllNoticeList");
 		sqlsession.close();
-
-		JSONArray jarr = new JSONArray();
-		for(NoticeDTO n : noticeList) {
-			JSONObject jobj = new JSONObject();
-			//제목만 표시할예정
-			jobj.put("title", n.getBbsTitle());
-			jobj.put("bbsId",n.getBbsId());
-			jarr.add(jobj);
-		}
+		
+		
+		HashMap<String,Object> map = new HashMap<>();
+		map.put("jarr", noticeList);
+		Gson gson = new Gson();
+		String Obj = gson.toJson(map);
 		PrintWriter out = response.getWriter();
-		out.println(jarr);
+		//toString ?? 그냥??
+		out.println(Obj.toString());
 		
 	}
 	
