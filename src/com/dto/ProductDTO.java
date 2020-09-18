@@ -1,9 +1,11 @@
 package com.dto;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
-@Alias("ProductDTO")
-public class ProductDTO {
+@Alias("ProductDTO")			//NotSerializableException 때문에 추가함
+public class ProductDTO implements Serializable{
 		private int productId; 			//상품등록번호 1부터시작
 		private String productName;		//상품이름
 		private String shortDetail;			//간단설명

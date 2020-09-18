@@ -1,9 +1,11 @@
 package com.dto;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
-@Alias("NoticeDTO")
-public class NoticeDTO {
+@Alias("NoticeDTO")				//NotSerializableException때문에 추가함
+public class NoticeDTO implements Serializable{
 	private int bbsId;			 //글번호
 	private String bbsTitle; 	//제목
 	private String bbsContent; 	//내용

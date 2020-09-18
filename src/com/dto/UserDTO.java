@@ -1,9 +1,11 @@
 package com.dto;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
-@Alias("UserDTO")
-public class UserDTO {
+@Alias("UserDTO")			//NotSerializableException 때문에 추가함
+public class UserDTO implements Serializable {
 	private String userName; //이름
 	private String userId;	//아이디
 	private String userPwd;	//비밀번호

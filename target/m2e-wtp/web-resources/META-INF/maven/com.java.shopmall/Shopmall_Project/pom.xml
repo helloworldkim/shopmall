@@ -4,6 +4,12 @@
   <artifactId>Shopmall_Project</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <dependencies>
+  <!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-jdbc</artifactId>
+	    <version>5.2.5.RELEASE</version>
+	</dependency>
   <!-- jstl dependecy -->
  	 <dependency> 
 	  	<groupId>javax.servlet</groupId>
