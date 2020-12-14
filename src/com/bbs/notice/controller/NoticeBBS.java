@@ -81,8 +81,7 @@ public class NoticeBBS extends HttpServlet {
 		Gson gson = new Gson();
 		String Obj = gson.toJson(map);
 		PrintWriter out = response.getWriter();
-		//toString ?? 그냥??
-		out.println(Obj.toString());
+		out.println(Obj);
 		
 	}
 	

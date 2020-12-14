@@ -1,0 +1,32 @@
+{DEBUG} [2020-12-02 18:22:04,558] <org.apache.ibatis.logging.LogFactory> : Logging initialized using 'class org.apache.ibatis.logging.log4j.Log4jImpl' adapter.
+{DEBUG} [2020-12-02 18:22:04,578] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,579] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,580] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,580] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,580] <org.apache.ibatis.datasource.pooled.PooledDataSource> : PooledDataSource forcefully closed/removed all connections.
+{DEBUG} [2020-12-02 18:22:04,777] <com.mybatis.mapper.noticeMapper> : Cache Hit Ratio [com.mybatis.mapper.noticeMapper]: 0.0
+{DEBUG} [2020-12-02 18:22:04,787] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Opening JDBC Connection
+{DEBUG} [2020-12-02 18:22:05,599] <org.apache.ibatis.datasource.pooled.PooledDataSource> : Created connection 805779724.
+{DEBUG} [2020-12-02 18:22:05,600] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:05,603] <com.mybatis.mapper.noticeMapper.getAllNoticeList> : ==>  Preparing: select * from (select * from noticebbs order by bbsdate desc) where rownum <=10 
+{DEBUG} [2020-12-02 18:22:05,828] <com.mybatis.mapper.noticeMapper.getAllNoticeList> : ==> Parameters: 
+{DEBUG} [2020-12-02 18:22:05,972] <com.mybatis.mapper.noticeMapper.getAllNoticeList> : <==      Total: 10
+{DEBUG} [2020-12-02 18:22:05,972] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Resetting autocommit to true on JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:05,972] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Closing JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:05,973] <org.apache.ibatis.datasource.pooled.PooledDataSource> : Returned connection 805779724 to pool.
+{DEBUG} [2020-12-02 18:22:06,918] <com.mybatis.mapper.noticeMapper> : Cache Hit Ratio [com.mybatis.mapper.noticeMapper]: 0.5
+{DEBUG} [2020-12-02 18:22:06,929] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Opening JDBC Connection
+{DEBUG} [2020-12-02 18:22:06,929] <org.apache.ibatis.datasource.pooled.PooledDataSource> : Checked out connection 805779724 from pool.
+{DEBUG} [2020-12-02 18:22:06,930] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Setting autocommit to false on JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:06,930] <com.mybatis.mapper.productMapper.getProductListByHit> : ==>  Preparing: select * from (select * from product order by producthit desc) where productcategory like '%'||?||'%' 
+{DEBUG} [2020-12-02 18:22:06,931] <com.mybatis.mapper.productMapper.getProductListByHit> : ==> Parameters: (String)
+{DEBUG} [2020-12-02 18:22:06,946] <com.mybatis.mapper.productMapper.getProductListByHit> : <==      Total: 14
+{DEBUG} [2020-12-02 18:22:06,946] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Resetting autocommit to true on JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:06,947] <org.apache.ibatis.transaction.jdbc.JdbcTransaction> : Closing JDBC Connection [oracle.jdbc.driver.T4CConnection@3007390c]
+{DEBUG} [2020-12-02 18:22:06,947] <org.apache.ibatis.datasource.pooled.PooledDataSource> : Returned connection 805779724 to pool.

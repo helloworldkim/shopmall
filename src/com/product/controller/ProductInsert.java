@@ -67,8 +67,10 @@ public class ProductInsert extends HttpServlet {
 		System.out.println("실제파일이름:"+fileName);
 		
 		
-		 ProductDTO product =new ProductDTO(); product.setProductName(productName);
-		 product.setShortDetail(shortDetail); product.setProductPrice(productPrice);
+		 ProductDTO product =new ProductDTO(); 
+		 product.setProductName(productName);
+		 product.setShortDetail(shortDetail); 
+		 product.setProductPrice(productPrice);
 		 product.setProductCategory(productCategory);
 		 product.setProductSalePer(productSalePer);
 		 product.setProductSalePrice(productSalePrice);
@@ -100,6 +102,7 @@ public class ProductInsert extends HttpServlet {
 		 int result = sqlsession.insert("InsertProduct",product); 
 		 sqlsession.commit();
 		 sqlsession.close();
+		 
 		 if(result==1) { 
 		 PrintWriter script = response.getWriter();
 		 script.println("<script>");
